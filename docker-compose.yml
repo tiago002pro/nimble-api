@@ -6,8 +6,8 @@ services:
     restart: always
     container_name: nimble
     ports:
-      - 7777:5432
+      - 8888:5432
     environment:
-      POSTGRES_DB: nimble-api
-      POSTGRES_USER: nimble
+      POSTGRES_DB: nimble
+      POSTGRES_USER: tiago
       POSTGRES_PASSWORD: 123
