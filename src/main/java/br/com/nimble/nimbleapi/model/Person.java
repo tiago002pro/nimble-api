@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -21,6 +22,24 @@ public class Person {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "email")
-    private String email;
+    @Column(name = "sexo")
+    public String sexo;
+
+    @Column(name = "cpf")
+    public String cpf;
+
+    @Column(name = "rg")
+    public String rg;
+
+    @Column(name = "cnpj")
+    public String cnpj;
+
+    @Column(name = "ie")
+    public String ie;
+
+    @Column(name = "birth_date")
+    public Date birthDate;
+
+    @Column(name = "foundation_date")
+    public Date foundationDate;
 }
