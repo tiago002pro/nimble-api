@@ -18,7 +18,13 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="name" type="varchar(2000)"/>
-            <column name="email" type="varchar(50)"/>
+            <column name="sexo" type="varchar(10)"/>
+            <column name="cpf" type="varchar(20)"/>
+            <column name="rg" type="varchar(20)"/>
+            <column name="cnpj" type="varchar(20)"/>
+            <column name="ie" type="varchar(20)"/>
+            <column name="birth_date" type="date"/>
+            <column name="foundation_date" type="date"/>
         </createTable>
     </changeSet>
 </databaseChangeLog>
