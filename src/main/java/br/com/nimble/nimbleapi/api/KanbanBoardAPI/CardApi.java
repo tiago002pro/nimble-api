@@ -17,11 +17,13 @@ public class CardApi {
     @Autowired
     CardService service;
 
+    @CrossOrigin
     @RequestMapping(path = {"/post/{id_listCard}"}, method = {RequestMethod.POST})
     public String createCards(@PathVariable Long id_listCard, @RequestBody Map<String, Object> json) {
         return this.service.createCards(id_listCard, json);
     }
 
+    @CrossOrigin
     @Transactional(readOnly = true)
     @RequestMapping("/get")
     public List<Card> getAllCards() {
