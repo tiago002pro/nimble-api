@@ -17,7 +17,7 @@
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="name" type="varchar(2000)"/>
+            <column name="name" type="varchar(200)"/>
             <column name="sexo" type="varchar(10)"/>
             <column name="cpf" type="varchar(20)"/>
             <column name="rg" type="varchar(20)"/>
@@ -25,6 +25,36 @@
             <column name="ie" type="varchar(20)"/>
             <column name="birth_date" type="date"/>
             <column name="foundation_date" type="date"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="tiagobarbosa02@outlook.com">
+        <preConditions>
+            <not>
+                <tableExists tableName="list_cards"/>
+            </not>
+        </preConditions>
+        <createTable tableName="list_cards">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="title" type="varchar(20)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="3" author="tiagobarbosa02@outlook.com">
+        <preConditions>
+            <not>
+                <tableExists tableName="card" />
+            </not>
+        </preConditions>
+        <createTable tableName="card">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="id_listcard" type="bigint" >
+                <constraints foreignKeyName="fk_id_listCards_references_listCards" referencedTableName="list_cards" referencedColumnNames="id" />
+            </column>
+            <column name="title" type="varchar(200)"/>
+            <column name="description" type="varchar(200)"/>
         </createTable>
     </changeSet>
 </databaseChangeLog>
