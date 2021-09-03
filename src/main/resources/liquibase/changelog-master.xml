@@ -4,9 +4,8 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-<!--    <include file="classpath:/liquibase/v7/changelog-master-v7.xml"/>-->
-<!--    <include file="classpath:/liquibase/v8/changelog-master-v8.xml"/>-->
-    
+<!--    <include file="classpath:/liquibase/v1/changelog-v1.0.0.fxml"/>-->
+
     <changeSet id="1" author="tiagobarbosa02@outlook.com">
         <preConditions>
             <not>
@@ -18,16 +17,110 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="name" type="varchar(200)"/>
-            <column name="sexo" type="varchar(10)"/>
-            <column name="cpf" type="varchar(20)"/>
-            <column name="rg" type="varchar(20)"/>
-            <column name="cnpj" type="varchar(20)"/>
-            <column name="ie" type="varchar(20)"/>
-            <column name="birth_date" type="date"/>
-            <column name="foundation_date" type="date"/>
+            <column name="dateofbirthorfondation" type="DATE"/>
+            <column name="id_address" type="bigint" >
+                <constraints foreignKeyName="fk_id_address_references_address" referencedTableName="address" referencedColumnNames="id" />
+            </column>
         </createTable>
     </changeSet>
+
     <changeSet id="2" author="tiagobarbosa02@outlook.com">
+        <preConditions>
+            <not>
+                <tableExists tableName="email"/>
+            </not>
+        </preConditions>
+        <createTable tableName="email">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="email_primary" type="varchar(50)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="3" author="tiagobarbosa02@outlook.com">
+        <preConditions>
+            <not>
+                <tableExists tableName="address"/>
+            </not>
+        </preConditions>
+        <createTable tableName="address">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="zip_code" type="varchar(10)"/>
+            <column name="premisse" type="varchar(30)"/>
+            <column name="premisse_type" type="varchar(10)"/>
+            <column name="number" type="varchar(10)"/>
+            <column name="neighbourhood" type="varchar(30)"/>
+            <column name="information" type="varchar(30)"/>
+            <column name="location" type="varchar(20)"/>
+            <column name="state" type="varchar(20)"/>
+            <column name="country" type="varchar(20)"/>
+        </createTable>
+    </changeSet>
+
+
+
+    <changeSet id="4" author="tiagobarbosa02@outlook.com">
+        <preConditions>
+            <not>
+                <tableExists tableName="individual"/>
+            </not>
+        </preConditions>
+        <createTable tableName="individual">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="cpf" type="varchar(20)"/>
+            <column name="rg" type="varchar(20)"/>
+            <column name="gender" type="varchar(10)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="5" author="tiagobarbosa02@outlook.com">
+        <preConditions>
+            <not>
+                <tableExists tableName="juridica"/>
+            </not>
+        </preConditions>
+        <createTable tableName="juridica">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="short_name" type="varchar(50)"/>
+            <column name="cnpj" type="varchar(20)"/>
+            <column name="ie" type="varchar(20)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="6" author="tiagobarbosa02@outlook.com">
+        <preConditions>
+            <not>
+                <tableExists tableName="phone"/>
+            </not>
+        </preConditions>
+        <createTable tableName="phone">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="phone_primary" type="varchar(20)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="7" author="tiagobarbosa02@outlook.com">
+        <preConditions>
+            <not>
+                <tableExists tableName="storage_file"/>
+            </not>
+        </preConditions>
+        <createTable tableName="storage_file">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="doc_name" type="varchar(30)"/>
+            <column name="url" type="varchar(220)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="8" author="tiagobarbosa02@outlook.com">
         <preConditions>
             <not>
                 <tableExists tableName="list_cards"/>
@@ -40,7 +133,7 @@
             <column name="title" type="varchar(20)"/>
         </createTable>
     </changeSet>
-    <changeSet id="3" author="tiagobarbosa02@outlook.com">
+    <changeSet id="9" author="tiagobarbosa02@outlook.com">
         <preConditions>
             <not>
                 <tableExists tableName="card" />

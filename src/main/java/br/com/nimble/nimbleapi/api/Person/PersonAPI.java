@@ -1,7 +1,7 @@
-package br.com.nimble.nimbleapi.api;
+package br.com.nimble.nimbleapi.api.Person;
 
-import br.com.nimble.nimbleapi.model.Person;
-import br.com.nimble.nimbleapi.service.PersonService;
+import br.com.nimble.nimbleapi.model.Person.Person;
+import br.com.nimble.nimbleapi.service.Person.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

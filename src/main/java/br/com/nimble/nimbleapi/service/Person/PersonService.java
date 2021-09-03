@@ -1,13 +1,12 @@
-package br.com.nimble.nimbleapi.service;
+package br.com.nimble.nimbleapi.service.Person;
 
-import br.com.nimble.nimbleapi.model.Person;
-import br.com.nimble.nimbleapi.repository.PersonRepository;
+import br.com.nimble.nimbleapi.model.Person.Person;
+import br.com.nimble.nimbleapi.repository.Person.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -23,12 +22,6 @@ public class PersonService {
         Person person = new Person();
 
         person.setName((String) json.get("nome"));
-        person.setSexo((String) json.get("sexo"));
-        person.setCpf((String) json.get("cpf"));
-        person.setRg((String) json.get("rg"));
-        person.setCnpj((String) json.get("cnpj"));
-        person.setIe((String) json.get("ie"));
-        person.setBirthDate((Date) json.get("DataNascimento"));
         this.repository.save(person);
 
         return "Pessoa Cadastrada com sucesso";
