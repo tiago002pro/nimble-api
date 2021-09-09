@@ -12,14 +12,17 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "email")
-public class Email {
+@Table(name = "document")
+public class Document {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "email_primary")
-    private String emailPrimary;
+    @Column(name = "doc_name")
+    private String docName;
+
+    @Column(name = "url")
+    private String url;
 
     @ManyToOne
     @JoinColumn(name = "person_id", referencedColumnName = "id")

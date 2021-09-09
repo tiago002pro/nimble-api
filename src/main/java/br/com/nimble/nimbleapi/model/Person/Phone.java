@@ -20,4 +20,8 @@ public class Phone {
 
     @Column(name = "phone_primary")
     private String phonePrimary;
+
+    @ManyToOne
+    @JoinColumn(name = "person_id", referencedColumnName = "id")
+    private Person person;
 }

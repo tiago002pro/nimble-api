@@ -40,15 +40,15 @@
                 <tableExists tableName="juridica"/>
             </not>
         </preConditions>
+        <addForeignKeyConstraint baseColumnNames="id" baseTableName="juridica" constraintName="fk_id_person_references_person" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="person"/>
         <createTable tableName="juridica">
-            <column name="id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
             <column name="short_name" type="varchar(50)"/>
             <column name="cnpj" type="varchar(20)"/>
             <column name="ie" type="varchar(20)"/>
         </createTable>
     </changeSet>
+
+
 
     <changeSet id="4" author="tiagobarbosa02@outlook.com">
         <preConditions>

@@ -22,6 +22,7 @@ public class PersonService {
         Person person = new Person();
 
         person.setName((String) json.get("nome"));
+        person.setDateofbirthorfondation("");
         this.repository.save(person);
 
         return "Pessoa Cadastrada com sucesso";

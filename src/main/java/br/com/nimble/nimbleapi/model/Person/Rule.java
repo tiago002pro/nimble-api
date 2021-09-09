@@ -1,5 +1,6 @@
 package br.com.nimble.nimbleapi.model.Person;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,15 +13,15 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "storage_file")
-public class StorageFile {
+@Table(name = "rule")
+public class Rule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "doc_name")
-    private String docName;
+    @Column(name = "rule")
+    private String rule;
 
-    @Column(name = "url")
-    private String url;
+    @Column(name = "tag")
+    public String tag;
 }

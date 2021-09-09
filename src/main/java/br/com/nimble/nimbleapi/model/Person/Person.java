@@ -13,6 +13,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "person")
 public class Person {
     @Id
@@ -24,8 +25,4 @@ public class Person {
 
     @Column(name = "dateofbirthorfondation")
     public String dateofbirthorfondation;
-
-    @OneToMany(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "id_address", referencedColumnName = "id")
-    private Address address;
 }
