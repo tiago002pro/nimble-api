@@ -18,10 +18,9 @@ public class Phone {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "phone_primary")
-    private String phonePrimary;
+    @Column(name = "phone")
+    private String phone;
 
-    @ManyToOne
-    @JoinColumn(name = "person_id", referencedColumnName = "id")
-    private Person person;
+    @Column(name = "phone_type")
+    private String phoneType;
 }

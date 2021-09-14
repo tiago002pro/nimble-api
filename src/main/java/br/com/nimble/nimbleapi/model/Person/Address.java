@@ -44,8 +44,4 @@ public class Address {
 
     @Column(name = "country")
     private String country;
-
-    @ManyToOne
-    @JoinColumn(name = "person_id", referencedColumnName = "id")
-    private Person person;
 }

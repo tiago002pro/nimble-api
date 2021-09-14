@@ -23,8 +23,4 @@ public class Document {
 
     @Column(name = "url")
     private String url;
-
-    @ManyToOne
-    @JoinColumn(name = "person_id", referencedColumnName = "id")
-    private Person person;
 }
