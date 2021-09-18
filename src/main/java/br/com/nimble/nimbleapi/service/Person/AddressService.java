@@ -6,6 +6,8 @@ import br.com.nimble.nimbleapi.repository.Person.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 @Service
 public class AddressService {
 
@@ -15,19 +17,20 @@ public class AddressService {
     @Autowired
     PersonService personService;
 
-    public void saveAddress(Long idPerson) {
+    public void saveAddress(Long idPerson, Map<String, String> json) {
         Person person = personService.getById(idPerson);
-        Address address = new Address();
 
-        address.setZipCode("87013-100");
-        address.setPremisseType("Rua");
-        address.setPremisse("Piratininga");
-        address.setNumber("119");
-        address.setNeighbourhood("Zona 1");
-        address.setInformation("Endereço comercial");
-        address.setLocation("Maringá");
-        address.setState("PR");
-        address.setCountry("Brasil");
+        Address address = new Address(
+                json.get("zipCode"),
+                json.get("premisse"),
+                json.get("number"),
+                json.get("neighbourhood"),
+                json.get("information"),
+                json.get("location"),
+                json.get("state"),
+                json.get("country")
+        );
+
         person.getAddresses().add(address);
         this.repository.save(address);
     }

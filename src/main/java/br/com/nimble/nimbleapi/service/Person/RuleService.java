@@ -7,6 +7,8 @@ import br.com.nimble.nimbleapi.repository.Person.RuleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 @Service
 public class RuleService {
 
@@ -16,12 +18,13 @@ public class RuleService {
     @Autowired
     PersonService personService;
 
-    public void saveRule(Long idPerson) {
+    public void saveRule(Long idPerson, Map<String, String> json) {
         Person person = personService.getById(idPerson);
-        Rule rule = new Rule();
+        Rule rule = new Rule(
+                json.get("rule"),
+                json.get("tag")
+        );
 
-        rule.setRule("Fornecedor");
-        rule.setTag("FORNECEDOR");
         person.getRuleList().add(rule);
         this.repository.save(rule);
     }

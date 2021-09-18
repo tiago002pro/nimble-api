@@ -16,16 +16,10 @@ public class PersonAPI {
     @Autowired
     PersonService service;
 
-//    @Transactional
-//    @RequestMapping(method = RequestMethod.POST, value = "/form/pj")
-//    public String setPerson(Map<String, String> json)  {
-//        return this.service.createPJ(json);
-//    }
-//
-//    @Transactional
-//    @RequestMapping(method = RequestMethod.GET, value = "/get/pj")
-//    public List<Juridica> gerListPerson() {
-//        return this.service.getLisPerson();
-//    }
+    @Transactional
+    @RequestMapping(method = RequestMethod.GET, value = "/get/person-list")
+    public List<Person> gerListPerson() {
+        return this.service.getPersosList();
+    }
 }
 

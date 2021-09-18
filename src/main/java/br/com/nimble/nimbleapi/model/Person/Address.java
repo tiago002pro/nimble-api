@@ -24,9 +24,6 @@ public class Address {
     @Column(name = "premisse")
     private String premisse;
 
-    @Column(name = "premisse_type")
-    private String premisseType;
-
     @Column(name = "number")
     private String number;
 
@@ -44,4 +41,22 @@ public class Address {
 
     @Column(name = "country")
     private String country;
+
+    public Address(String zipCode,
+                   String premisse,
+                   String number,
+                   String neighbourhood,
+                   String information,
+                   String location,
+                   String state,
+                   String country) {
+        this.zipCode = zipCode;
+        this.premisse = premisse;
+        this.number = number;
+        this.neighbourhood = neighbourhood;
+        this.information = information;
+        this.location = location;
+        this.state = state;
+        this.country = country;
+    }
 }

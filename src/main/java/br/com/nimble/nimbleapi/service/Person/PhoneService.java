@@ -8,6 +8,8 @@ import br.com.nimble.nimbleapi.repository.Person.RuleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 @Service
 public class PhoneService {
 
@@ -17,12 +19,13 @@ public class PhoneService {
     @Autowired
     PersonService personService;
 
-    public void savePhone(Long idPerson) {
+    public void savePhone(Long idPerson, Map<String, String> json) {
         Person person = personService.getById(idPerson);
-        Phone phone = new Phone();
+        Phone phone = new Phone(
+                json.get("phone"),
+                json.get("phoneType")
+        );
 
-        phone.setPhone("4432218550");
-        phone.setPhoneType("Comercial");
         person.getPhones().add(phone);
         this.repository.save(phone);
     }

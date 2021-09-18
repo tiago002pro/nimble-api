@@ -6,19 +6,23 @@ import br.com.nimble.nimbleapi.repository.Person.EmailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 @Service
 public class EmailService {
+
     @Autowired
     EmailRepository repository;
 
     @Autowired
     PersonService personService;
 
-    public void saveEmail(Long idPerson) {
+    public void saveEmail(Long idPerson, Map<String, String> json) {
         Person person = personService.getById(idPerson);
-        Email email = new Email();
+        Email email = new Email(
+                json.get("email")
+        );
 
-        email.setEmail("maria@hotmail.com");
         person.getEmails().add(email);
         this.repository.save(email);
     }

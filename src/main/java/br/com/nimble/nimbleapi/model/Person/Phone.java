@@ -23,4 +23,9 @@ public class Phone {
 
     @Column(name = "phone_type")
     private String phoneType;
+
+    public Phone(String phone, String phoneType) {
+        this.phone = phone;
+        this.phoneType = phoneType;
+    }
 }

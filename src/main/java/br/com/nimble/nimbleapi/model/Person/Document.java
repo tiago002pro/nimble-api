@@ -23,4 +23,9 @@ public class Document {
 
     @Column(name = "url")
     private String url;
+
+    public Document(String docName, String url) {
+        this.docName = docName;
+        this.url = url;
+    }
 }

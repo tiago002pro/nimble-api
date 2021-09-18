@@ -65,7 +65,6 @@
                 <constraints foreignKeyName="fk_id_person_references_person" referencedTableName="person" referencedColumnNames="id" />
             </column>
             <column name="zip_code" type="varchar(10)"/>
-            <column name="premisse_type" type="varchar(10)"/>
             <column name="premisse" type="varchar(30)"/>
             <column name="number" type="varchar(10)"/>
             <column name="neighbourhood" type="varchar(30)"/>

@@ -23,5 +23,10 @@ public class Rule {
     private String rule;
 
     @Column(name = "tag")
-    public String tag;
+    private String tag;
+
+    public Rule(String rule, String tag) {
+        this.rule = rule;
+        this.tag = tag;
+    }
 }

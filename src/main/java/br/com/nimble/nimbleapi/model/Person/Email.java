@@ -10,6 +10,8 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "email")
 public class Email {
     @Id
@@ -18,4 +20,8 @@ public class Email {
 
     @Column(name = "email")
     private String email;
+
+    public Email(String email) {
+        this.email = email;
+    }
 }

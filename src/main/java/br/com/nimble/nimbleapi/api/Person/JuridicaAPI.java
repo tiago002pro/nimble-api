@@ -4,6 +4,7 @@ import br.com.nimble.nimbleapi.model.Person.Juridica;
 import br.com.nimble.nimbleapi.service.Person.JuridicaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/pessoa-juridica")
+@RequestMapping("/api/person-juridica")
 public class JuridicaAPI {
 
     @Autowired
@@ -20,7 +21,7 @@ public class JuridicaAPI {
 
     @Transactional
     @RequestMapping(method = RequestMethod.POST, value = "/form")
-    public String setJuridicalPerson(Map<String, String> json)  {
+    public Juridica setJuridicalPerson(@RequestBody Map<String, String> json)  {
         return this.service.createPJ(json);
     }
 

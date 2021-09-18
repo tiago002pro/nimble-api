@@ -5,6 +5,8 @@ import br.com.nimble.nimbleapi.repository.Person.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PersonService {
 
@@ -13,5 +15,9 @@ public class PersonService {
 
     public Person getById(Long id) {
         return this.repository.getById(id);
+    }
+
+    public List<Person> getPersosList() {
+        return this.repository.findAll();
     }
 }

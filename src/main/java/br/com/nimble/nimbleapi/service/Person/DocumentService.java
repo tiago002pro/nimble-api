@@ -7,6 +7,8 @@ import br.com.nimble.nimbleapi.repository.Person.DocumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 @Service
 public class DocumentService {
 
@@ -16,12 +18,13 @@ public class DocumentService {
     @Autowired
     PersonService personService;
 
-    public void saveDocument(Long idPerson) {
+    public void saveDocument(Long idPerson, Map<String, String> json) {
         Person person = personService.getById(idPerson);
-        Document document = new Document();
+        Document document = new Document(
+                json.get("docName"),
+                json.get("url")
+        );
 
-        document.setDocName("RG");
-        document.setUrl("http://www.dfsdfsdfsdfsdf.com.br");
         person.getDocuments().add(document);
         this.repository.save(document);
     }

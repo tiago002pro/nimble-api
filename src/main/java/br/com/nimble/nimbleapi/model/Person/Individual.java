@@ -2,16 +2,18 @@ package br.com.nimble.nimbleapi.model.Person;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "individual")
-public class Individual {
+public class Individual extends Person{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,4 +26,14 @@ public class Individual {
 
     @Column(name = "gender")
     private String gender;
+
+    public Individual() {
+    }
+
+    public Individual(String name, List<Address> addresses, List<Phone> phones, List<Email> emails, List<Document> documents, List<Rule> ruleList, String cpf, String rg, String gender) {
+        super(name, addresses, phones, emails, documents, ruleList);
+        this.cpf = cpf;
+        this.rg = rg;
+        this.gender = gender;
+    }
 }
