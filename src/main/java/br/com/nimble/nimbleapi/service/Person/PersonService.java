@@ -14,7 +14,7 @@ public class PersonService {
     PersonRepository repository;
 
     public Person getById(Long id) {
-        return this.repository.getById(id);
+        return this.repository.findById(id).get();
     }
 
     public List<Person> getPersosList() {

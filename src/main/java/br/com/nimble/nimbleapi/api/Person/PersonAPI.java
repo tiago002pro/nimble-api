@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/person")
@@ -20,6 +19,12 @@ public class PersonAPI {
     @RequestMapping(method = RequestMethod.GET, value = "/get/person-list")
     public List<Person> gerListPerson() {
         return this.service.getPersosList();
+    }
+
+    @Transactional
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+    public Person getById(@PathVariable Long id) {
+        return this.service.getById(id);
     }
 }
 
