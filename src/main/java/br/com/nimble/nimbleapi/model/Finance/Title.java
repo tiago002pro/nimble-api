@@ -42,11 +42,11 @@ public class Title {
     private Double finalValue;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn
+    @JoinColumn(name = "person_id")
     private Person person;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn
+    @JoinColumn(name = "subcategory_id")
     private Subcategory subcategory;
 
 

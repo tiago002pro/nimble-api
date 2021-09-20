@@ -45,9 +45,18 @@
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="name" type="varchar(30)"/>
-            <column name="category_id" type="bigint" >
-                <constraints foreignKeyName="fk_id_category_references_category" referencedTableName="category" referencedColumnNames="id" />
+            <column name="type" type="varchar(20)"/>
+            <column name="release_date" type="date" />
+            <column name="due_date" type="date" />
+            <column name="movement_date" type="date" />
+            <column name="historic" type="varchar(200)" />
+            <column name="value" type="double" />
+            <column name="final_value" type="double" />
+            <column name="person_id" type="bigint">
+                <constraints foreignKeyName="fk_id_person_references_person" referencedTableName="person" referencedColumnNames="id" />
+            </column>
+            <column name="subcategory_id" type="bigint">
+                <constraints foreignKeyName="fk_id_subcategory_references_subcategory" referencedTableName="subcategory" referencedColumnNames="id" />
             </column>
         </createTable>
     </changeSet>
