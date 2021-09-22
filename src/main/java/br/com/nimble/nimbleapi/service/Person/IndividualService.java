@@ -30,33 +30,9 @@ public class IndividualService {
     @Autowired
     RuleService ruleService;
 
-    public Individual createPF(Map<String, String> json) {
-        List<Address> addresses = new ArrayList<>();
-        List<Phone> phones = new ArrayList<>();
-        List<Email> emails = new ArrayList<>();
-        List<Document> documents = new ArrayList<>();
-        List<Rule> ruleList = new ArrayList<>();
-
-        Individual individual = new Individual(
-                json.get("name"),
-                addresses,
-                phones,
-                emails,
-                documents,
-                ruleList,
-                json.get("cpf"),
-                json.get("rg"),
-                json.get("gender")
-        );
-
-        this.repository.save(individual);
-        this.addressService.saveAddress(individual.getId(), json);
-        this.phoneService.savePhone(individual.getId(), json);
-        this.emailService.saveEmail(individual.getId(), json);
-        this.documentService.saveDocument(individual.getId(), json);
-        this.ruleService.saveRule(individual.getId(), json);
-
-        return individual;
+    public Individual createPF(Individual resource) {
+        this.repository.save(resource);
+        return resource;
     }
 
     public List<Individual> getLisPF() {

@@ -30,33 +30,9 @@ public class JuridicaService {
     @Autowired
     RuleService ruleService;
 
-    public Juridica createPJ(Map<String, String> json) {
-        List<Address> addresses = new ArrayList<>();
-        List<Phone> phones = new ArrayList<>();
-        List<Email> emails = new ArrayList<>();
-        List<Document> documents = new ArrayList<>();
-        List<Rule> ruleList = new ArrayList<>();
-
-        Juridica juridica = new Juridica(
-                json.get("name"),
-                addresses,
-                phones,
-                emails,
-                documents,
-                ruleList,
-                json.get("short_name"),
-                json.get("cnpj"),
-                json.get("ie")
-        );
-
-        this.repository.save(juridica);
-        this.addressService.saveAddress(juridica.getId(), json);
-        this.phoneService.savePhone(juridica.getId(), json);
-        this.emailService.saveEmail(juridica.getId(), json);
-        this.documentService.saveDocument(juridica.getId(), json);
-        this.ruleService.saveRule(juridica.getId(), json);
-
-        return juridica;
+    public Juridica createPJ(Juridica resource) {
+         this.repository.save(resource);
+         return resource;
     }
 
     public List<Juridica> getLisPJ() {

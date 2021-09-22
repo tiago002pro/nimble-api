@@ -21,8 +21,8 @@ public class JuridicaAPI {
 
     @Transactional
     @RequestMapping(method = RequestMethod.POST, value = "/form")
-    public Juridica setJuridicalPerson(@RequestBody Map<String, String> json)  {
-        return this.service.createPJ(json);
+    public Juridica setJuridicalPerson(@RequestBody Juridica resource)  {
+        return this.service.createPJ(resource);
     }
 
     @Transactional

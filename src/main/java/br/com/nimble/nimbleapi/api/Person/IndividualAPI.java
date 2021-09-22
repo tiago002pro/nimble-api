@@ -1,13 +1,11 @@
 package br.com.nimble.nimbleapi.api.Person;
 
 import br.com.nimble.nimbleapi.model.Person.Individual;
+import br.com.nimble.nimbleapi.model.Person.Person;
 import br.com.nimble.nimbleapi.service.Person.IndividualService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -19,10 +17,11 @@ public class IndividualAPI {
     @Autowired
     IndividualService service;
 
+    @CrossOrigin
     @Transactional
     @RequestMapping(method = RequestMethod.POST, value = "/form")
-    public Individual setJuridicalPerson(@RequestBody Map<String, String> json)  {
-        return this.service.createPF(json);
+    public Individual setJuridicalPerson(@RequestBody Individual resource)  {
+        return this.service.createPF(resource);
     }
 
     @Transactional
