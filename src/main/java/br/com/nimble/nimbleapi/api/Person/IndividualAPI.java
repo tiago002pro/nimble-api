@@ -24,6 +24,7 @@ public class IndividualAPI {
         return this.service.createPF(resource);
     }
 
+    @CrossOrigin
     @Transactional
     @RequestMapping(method = RequestMethod.GET, value = "/get")
     public List<Individual> getJuridicalPerson() {

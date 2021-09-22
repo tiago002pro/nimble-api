@@ -15,12 +15,14 @@ public class PersonAPI {
     @Autowired
     PersonService service;
 
+    @CrossOrigin
     @Transactional
     @RequestMapping(method = RequestMethod.GET, value = "/get/person-list")
     public List<Person> gerListPerson() {
         return this.service.getPersosList();
     }
 
+    @CrossOrigin
     @Transactional
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public Person getById(@PathVariable Long id) {
