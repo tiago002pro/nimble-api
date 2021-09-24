@@ -4,9 +4,12 @@ import br.com.nimble.nimbleapi.model.Person.Juridica;
 import br.com.nimble.nimbleapi.model.Person.Person;
 import br.com.nimble.nimbleapi.service.Person.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 @RestController
@@ -18,8 +21,8 @@ public class PersonAPI {
     @CrossOrigin
     @Transactional
     @RequestMapping(method = RequestMethod.GET, value = "/get/person-list")
-    public List<Person> gerListPerson() {
-        return this.service.getPersosList();
+    public Page<Person> gerListPerson(@RequestParam int page, @RequestParam int size) {
+        return this.service.getPersosList(PageRequest.of(page,size));
     }
 
     @CrossOrigin
