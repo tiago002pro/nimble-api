@@ -24,8 +24,12 @@ public class Phone {
     @Column(name = "phone_type")
     private String phoneType;
 
-    public Phone(String phone, String phoneType) {
+    @Column(name = "phone_primary")
+    private Boolean phonePrimary;
+
+    public Phone(String phone, String phoneType, Boolean phonePrimary) {
         this.phone = phone;
         this.phoneType = phoneType;
+        this.phonePrimary = phonePrimary;
     }
 }

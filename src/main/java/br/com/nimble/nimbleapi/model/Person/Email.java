@@ -21,7 +21,11 @@ public class Email {
     @Column(name = "email")
     private String email;
 
-    public Email(String email) {
+    @Column(name = "email_primary")
+    private Boolean emailPrimary;
+
+    public Email(String email, Boolean emailPrimary) {
         this.email = email;
+        this.emailPrimary = emailPrimary;
     }
 }

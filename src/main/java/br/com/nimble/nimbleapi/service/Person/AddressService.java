@@ -17,21 +17,22 @@ public class AddressService {
     @Autowired
     PersonService personService;
 
-    public void saveAddress(Long idPerson, Map<String, String> json) {
-        Person person = personService.getById(idPerson);
-
-        Address address = new Address(
-                json.get("zipCode"),
-                json.get("premisse"),
-                json.get("number"),
-                json.get("neighbourhood"),
-                json.get("information"),
-                json.get("location"),
-                json.get("state"),
-                json.get("country")
-        );
-
-        person.getAddresses().add(address);
-        this.repository.save(address);
-    }
+//    public void saveAddress(Long idPerson, Map<String, String> json) {
+//        Person person = personService.getById(idPerson);
+//
+//        Address address = new Address(
+//                json.get("zipCode"),
+//                json.get("premisse"),
+//                json.get("number"),
+//                json.get("neighbourhood"),
+//                json.get("information"),
+//                json.get("location"),
+//                json.get("state"),
+//                json.get("country"),
+//                json.get("primary")
+//        );
+//
+//        person.getAddresses().add(address);
+//        this.repository.save(address);
+//    }
 }

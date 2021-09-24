@@ -19,14 +19,14 @@ public class PhoneService {
     @Autowired
     PersonService personService;
 
-    public void savePhone(Long idPerson, Map<String, String> json) {
-        Person person = personService.getById(idPerson);
-        Phone phone = new Phone(
-                json.get("phone"),
-                json.get("phoneType")
-        );
-
-        person.getPhones().add(phone);
-        this.repository.save(phone);
-    }
+//    public void savePhone(Long idPerson, Map<String, String> json) {
+//        Person person = personService.getById(idPerson);
+//        Phone phone = new Phone(
+//                json.get("phone"),
+//                json.get("phoneType")
+//        );
+//
+//        person.getPhones().add(phone);
+//        this.repository.save(phone);
+//    }
 }

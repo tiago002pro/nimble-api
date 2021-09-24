@@ -17,13 +17,13 @@ public class EmailService {
     @Autowired
     PersonService personService;
 
-    public void saveEmail(Long idPerson, Map<String, String> json) {
-        Person person = personService.getById(idPerson);
-        Email email = new Email(
-                json.get("email")
-        );
-
-        person.getEmails().add(email);
-        this.repository.save(email);
-    }
+//    public void saveEmail(Long idPerson, Map<String, String> json) {
+//        Person person = personService.getById(idPerson);
+//        Email email = new Email(
+//                json.get("email")
+//        );
+//
+//        person.getEmails().add(email);
+//        this.repository.save(email);
+//    }
 }
