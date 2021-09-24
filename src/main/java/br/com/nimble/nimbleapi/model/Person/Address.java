@@ -42,6 +42,9 @@ public class Address {
     @Column(name = "country")
     private String country;
 
+    @Column(name = "address_primary")
+    private Boolean addressPrimary;
+
     public Address(String zipCode,
                    String premisse,
                    String number,
@@ -49,7 +52,8 @@ public class Address {
                    String information,
                    String location,
                    String state,
-                   String country) {
+                   String country,
+                   Boolean addressPrimary) {
         this.zipCode = zipCode;
         this.premisse = premisse;
         this.number = number;
@@ -58,5 +62,6 @@ public class Address {
         this.location = location;
         this.state = state;
         this.country = country;
+        this.addressPrimary = addressPrimary;
     }
 }

@@ -72,6 +72,7 @@
             <column name="location" type="varchar(20)"/>
             <column name="state" type="varchar(20)"/>
             <column name="country" type="varchar(20)"/>
+            <column name="address_primary" type="boolean"/>
         </createTable>
     </changeSet>
 
@@ -90,6 +91,7 @@
             </column>
             <column name="phone" type="varchar(20)"/>
             <column name="phone_type" type="varchar(20)"/>
+            <column name="phone_primary" type="boolean"/>
         </createTable>
     </changeSet>
 
@@ -107,6 +109,7 @@
                 <constraints foreignKeyName="fk_id_person_references_person" referencedTableName="person" referencedColumnNames="id" />
             </column>
             <column name="email" type="varchar(50)"/>
+            <column name="email_primary" type="boolean"/>
         </createTable>
     </changeSet>
 

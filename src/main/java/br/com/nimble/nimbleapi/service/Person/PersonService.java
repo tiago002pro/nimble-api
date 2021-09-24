@@ -17,6 +17,10 @@ public class PersonService {
         return this.repository.findById(id).get();
     }
 
+    public List<Person> getPersonListByRule(String rule) {
+        return this.repository.findAllPersonByRule(rule);
+    }
+
     public List<Person> getPersosList() {
         return this.repository.findAll();
     }
