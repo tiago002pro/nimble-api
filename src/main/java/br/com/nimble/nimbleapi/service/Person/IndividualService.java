@@ -15,21 +15,6 @@ public class IndividualService {
     @Autowired
     IndividualRepository repository;
 
-    @Autowired
-    AddressService addressService;
-
-    @Autowired
-    PhoneService phoneService;
-
-    @Autowired
-    EmailService emailService;
-
-    @Autowired
-    DocumentService documentService;
-
-    @Autowired
-    RuleService ruleService;
-
     public Individual createPF(Individual resource) {
         this.repository.save(resource);
         return resource;

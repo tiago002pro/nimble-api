@@ -15,21 +15,6 @@ public class JuridicaService {
     @Autowired
     JuridicaRepository repository;
 
-    @Autowired
-    AddressService addressService;
-
-    @Autowired
-    PhoneService phoneService;
-
-    @Autowired
-    EmailService emailService;
-
-    @Autowired
-    DocumentService documentService;
-
-    @Autowired
-    RuleService ruleService;
-
     public Juridica createPJ(Juridica resource) {
          this.repository.save(resource);
          return resource;

@@ -1,6 +1,7 @@
 package br.com.nimble.nimbleapi.service.Person;
 
 import br.com.nimble.nimbleapi.model.Person.*;
+import br.com.nimble.nimbleapi.repository.Person.IndividualRepository;
 import br.com.nimble.nimbleapi.repository.Person.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,11 +20,21 @@ public class PersonService {
         return this.repository.findById(id).get();
     }
 
+    public Page<Person> getPersosList(Pageable pageable) {
+        return this.repository.findAll(pageable);
+    }
+
+
     public List<Person> getPersonListByRule(String rule) {
         return this.repository.findAllPersonByRule(rule);
     }
 
-    public Page<Person> getPersosList(Pageable pageable) {
-        return this.repository.findAll(pageable);
+    public List<Person> getAllPersonList() {
+        return this.repository.findAllPerson();
+    }
+
+
+    public void deleteById(Long id) {
+        this.repository.deleteById(id);
     }
 }
