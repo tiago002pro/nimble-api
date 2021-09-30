@@ -10,19 +10,32 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public interface PersonRepository extends JpaRepository<Person, Long> {
 
-    @Query(nativeQuery = true,
-            value = " SELECT p.*" +
-                    " FROM person p" +
-                    " left JOIN rule r ON r.person_id = p.id" +
-                    " WHERE r.rule = :rule")
-    List<Person> findAllPersonByRule(@Param("rule") String rule);
+
+//    @Query(nativeQuery = true,
+//            value = " SELECT p.*, r.*" +
+//                    " FROM person p " +
+//                    "INNER JOIN rule r  on r.person_id = p.id " +
+//                    "where r.rule = :rule ")
+//    List<Map<String, Object>> findAllPersonByRule(@Param("rule") String rule);
 
     @Query(nativeQuery = true,
-            value = " SELECT *" +
-                    " FROM person ")
-    List<Person> findAllPerson();
+            value = "select" +
+                    " p.id," +
+                    " p.name," +
+                    " p.dateofbirthorfondation," +
+                    " i.cpf," +
+                    " j.cnpj" +
+                    " from" +
+                    " person p" +
+                    " left join individual i on i.person_id = p.id" +
+                    " left join juridica j on j.person_id = p.id" +
+                    " left join rule r on r.person_id = p.id" +
+                    " where r.rule = :rule")
+    Page<Map<String, Object>> findAllPersonByRule(@Param("rule") String rule, Pageable pageable);
+
 }

@@ -17,12 +17,12 @@ public class PersonAPI {
     @Autowired
     PersonService service;
 
-    @CrossOrigin
-    @Transactional
-    @RequestMapping(method = RequestMethod.GET, value = "/get/person-list")
-    public Page<Person> gerListPerson(@RequestParam int page, @RequestParam int size) {
-        return this.service.getPersosList(PageRequest.of(page,size));
-    }
+//    @CrossOrigin
+//    @Transactional
+//    @RequestMapping(method = RequestMethod.GET, value = "/get/person-list")
+//    public Page<Person> gerListPerson(@RequestParam int page, @RequestParam int size) {
+//        return this.service.getPersosList(PageRequest.of(page,size));
+//    }
 
     @CrossOrigin
     @Transactional
@@ -41,15 +41,8 @@ public class PersonAPI {
     @CrossOrigin
     @Transactional
     @RequestMapping(method = RequestMethod.GET, value = "/get/person-list/rule")
-    public ResponseEntity getListPersonByRule(@RequestParam(value = "rule") String rule) {
-        return ResponseEntity.ok(this.service.getPersonListByRule(rule));
-    }
-
-    @CrossOrigin
-    @Transactional
-    @RequestMapping(method = RequestMethod.GET, value = "/get/all/person-list")
-    public ResponseEntity getAllPersonList() {
-        return ResponseEntity.ok(this.service.getAllPersonList());
+    public ResponseEntity getListPersonByRule(@RequestParam(value = "rule") String rule, @RequestParam int page, @RequestParam int size) {
+        return ResponseEntity.ok(this.service.getPersonListByRule(rule, PageRequest.of(page,size)));
     }
 }
 

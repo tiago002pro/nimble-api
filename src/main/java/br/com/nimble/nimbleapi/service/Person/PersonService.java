@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class PersonService {
@@ -20,18 +21,15 @@ public class PersonService {
         return this.repository.findById(id).get();
     }
 
-    public Page<Person> getPersosList(Pageable pageable) {
-        return this.repository.findAll(pageable);
-    }
+//    public Page<Person> getPersosList(Pageable pageable) {
+//        return this.repository.findAll(pageable);
+//    }
 
 
-    public List<Person> getPersonListByRule(String rule) {
-        return this.repository.findAllPersonByRule(rule);
+    public Page<Map<String, Object>> getPersonListByRule(String rule, Pageable pageable) {
+        return this.repository.findAllPersonByRule(rule, pageable);
     }
 
-    public List<Person> getAllPersonList() {
-        return this.repository.findAllPerson();
-    }
 
 
     public void deleteById(Long id) {
