@@ -1,5 +1,6 @@
 package br.com.nimble.nimbleapi.model.Person;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,9 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Juridica.class, name = "Juridica"),
+        @JsonSubTypes.Type(value = Individual.class, name = "Individual")})
 @Table(name = "person")
 public class Person {
     @Id

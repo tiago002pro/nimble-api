@@ -40,7 +40,7 @@ public class PersonAPI {
 
     @CrossOrigin
     @Transactional
-    @RequestMapping(method = RequestMethod.POST, value = "/get/person-list/rule")
+    @RequestMapping(method = RequestMethod.GET, value = "/get/person-list/rule")
     public ResponseEntity getListPersonByRule(@RequestParam(value = "rule") String rule) {
         return ResponseEntity.ok(this.service.getPersonListByRule(rule));
     }

@@ -25,8 +25,8 @@
             </not>
         </preConditions>
         <createTable tableName="individual">
-            <column name="id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false"/>
+            <column name="person_id" type="bigint" >
+                <constraints foreignKeyName="fk_id_person_references_person" referencedTableName="person" referencedColumnNames="id" />
             </column>
             <column name="cpf" type="varchar(20)"/>
             <column name="rg" type="varchar(20)"/>
@@ -41,8 +41,8 @@
             </not>
         </preConditions>
         <createTable tableName="juridica">
-            <column name="id" type="BIGINT" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false"/>
+            <column name="person_id" type="bigint" >
+                <constraints foreignKeyName="fk_id_person_references_person" referencedTableName="person" referencedColumnNames="id" />
             </column>
             <column name="short_name" type="varchar(50)"/>
             <column name="cnpj" type="varchar(20)"/>

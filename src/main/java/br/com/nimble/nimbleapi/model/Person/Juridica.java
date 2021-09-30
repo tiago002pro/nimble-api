@@ -11,6 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
+@PrimaryKeyJoinColumn(name="person_id")
 @Table(name = "juridica")
 public class Juridica extends Person{
     @Id
