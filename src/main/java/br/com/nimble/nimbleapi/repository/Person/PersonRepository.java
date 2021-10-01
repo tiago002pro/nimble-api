@@ -15,14 +15,6 @@ import java.util.Map;
 @Repository
 public interface PersonRepository extends JpaRepository<Person, Long> {
 
-
-//    @Query(nativeQuery = true,
-//            value = " SELECT p.*, r.*" +
-//                    " FROM person p " +
-//                    "INNER JOIN rule r  on r.person_id = p.id " +
-//                    "where r.rule = :rule ")
-//    List<Map<String, Object>> findAllPersonByRule(@Param("rule") String rule);
-
     @Query(nativeQuery = true,
             value = "select" +
                     " p.id," +
@@ -37,5 +29,4 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
                     " left join rule r on r.person_id = p.id" +
                     " where r.rule = :rule")
     Page<Map<String, Object>> findAllPersonByRule(@Param("rule") String rule, Pageable pageable);
-
 }
