@@ -22,11 +22,4 @@ public class JuridicaAPI {
     public Juridica setJuridicalPerson(@RequestBody Juridica resource)  {
         return this.service.createPJ(resource);
     }
-
-    @CrossOrigin
-    @Transactional
-    @RequestMapping(method = RequestMethod.GET, value = "/get")
-    public List<Juridica> getJuridicalPerson() {
-        return this.service.getLisPJ();
-    }
 }

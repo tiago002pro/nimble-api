@@ -19,13 +19,6 @@ public class PersonAPI {
 
     @CrossOrigin
     @Transactional
-    @RequestMapping(method = RequestMethod.GET, value = "/get/person-list")
-    public Page<Person> gerListPerson(@RequestParam int page, @RequestParam int size) {
-        return this.service.getPersosList(PageRequest.of(page,size));
-    }
-
-    @CrossOrigin
-    @Transactional
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public Person getById(@PathVariable Long id) {
         return this.service.getById(id);

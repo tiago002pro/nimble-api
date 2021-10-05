@@ -36,5 +36,4 @@ public class Juridica extends Person{
         this.cnpj = cnpj;
         this.ie = ie;
     }
-
 }

@@ -19,8 +19,4 @@ public class JuridicaService {
          this.repository.save(resource);
          return resource;
     }
-
-    public List<Juridica> getLisPJ() {
-        return this.repository.findAll();
-    }
 }

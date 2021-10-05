@@ -21,16 +21,9 @@ public class PersonService {
         return this.repository.findById(id).get();
     }
 
-    public Page<Person> getPersosList(Pageable pageable) {
-        return this.repository.findAll(pageable);
-    }
-
-
     public Page<Map<String, Object>> getPersonListByRule(String rule, Pageable pageable) {
         return this.repository.findAllPersonByRule(rule, pageable);
     }
-
-
 
     public void deleteById(Long id) {
         this.repository.deleteById(id);

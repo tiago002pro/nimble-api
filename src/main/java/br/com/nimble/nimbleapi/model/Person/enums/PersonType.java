@@ -3,7 +3,9 @@ package br.com.nimble.nimbleapi.model.Person.enums;
 public enum PersonType {
     FISICA("Física"),
     JURIDICA("Juridica"),
-    FUNCIONÁRIO("Funcionário");
+    FUNCIONARIO("Funcionário"),
+    EMPRESA("Empresa"),
+    USUARIO("Usuário");
 
     private final String typesPerson;
 

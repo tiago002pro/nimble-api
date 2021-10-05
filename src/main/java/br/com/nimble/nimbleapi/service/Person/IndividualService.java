@@ -19,8 +19,4 @@ public class IndividualService {
         this.repository.save(resource);
         return resource;
     }
-
-    public List<Individual> getLisPF() {
-        return this.repository.findAll();
-    }
 }
