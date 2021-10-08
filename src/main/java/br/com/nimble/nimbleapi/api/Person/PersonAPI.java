@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,6 +34,7 @@ public class PersonAPI {
 
     @CrossOrigin
     @Transactional
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(method = RequestMethod.GET, value = "/get/person-list/rule")
     public ResponseEntity getListPersonByRule(@RequestParam(value = "rule") String rule, @RequestParam int page, @RequestParam int size) {
         return ResponseEntity.ok(this.service.getPersonListByRule(rule, PageRequest.of(page,size)));

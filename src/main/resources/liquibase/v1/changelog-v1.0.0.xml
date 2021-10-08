@@ -148,20 +148,19 @@
             <column name="tag" type="varchar(20)"/>
         </createTable>
     </changeSet>
-
     <changeSet id="9" author="tiagobarbosa02@outlook.com">
         <preConditions>
             <not>
-                <tableExists tableName="user"/>
+                <tableExists tableName="nimble_user"/>
             </not>
         </preConditions>
-        <createTable tableName="user_">
-            <column name="person_id" type="bigint" >
-                <constraints foreignKeyName="fk_id_person_references_person" referencedTableName="person" referencedColumnNames="id" />
+        <createTable tableName="nimble_user">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="login" type="varchar(100)"/>
+            <column name="username" type="varchar(100)"/>
             <column name="password" type="varchar(100)"/>
-            <column name="occupation" type="varchar(50)"/>
+            <column name="admin" type="boolean"/>
         </createTable>
     </changeSet>
 </databaseChangeLog>
