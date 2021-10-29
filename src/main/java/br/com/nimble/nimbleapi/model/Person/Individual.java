@@ -13,8 +13,6 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @PrimaryKeyJoinColumn(name="person_id")
-@JsonSubTypes({
-        @JsonSubTypes.Type(value = User.class, name = "Company"),})
 @Table(name = "individual")
 public class Individual extends Person{
     @Id

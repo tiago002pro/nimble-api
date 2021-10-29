@@ -148,20 +148,4 @@
             <column name="tag" type="varchar(20)"/>
         </createTable>
     </changeSet>
-
-    <changeSet id="9" author="tiagobarbosa02@outlook.com">
-        <preConditions>
-            <not>
-                <tableExists tableName="user"/>
-            </not>
-        </preConditions>
-        <createTable tableName="user_">
-            <column name="person_id" type="bigint" >
-                <constraints foreignKeyName="fk_id_person_references_person" referencedTableName="person" referencedColumnNames="id" />
-            </column>
-            <column name="login" type="varchar(100)"/>
-            <column name="password" type="varchar(100)"/>
-            <column name="occupation" type="varchar(50)"/>
-        </createTable>
-    </changeSet>
 </databaseChangeLog>
