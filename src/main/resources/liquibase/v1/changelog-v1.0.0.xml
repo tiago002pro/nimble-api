@@ -148,19 +148,4 @@
             <column name="tag" type="varchar(20)"/>
         </createTable>
     </changeSet>
-    <changeSet id="9" author="tiagobarbosa02@outlook.com">
-        <preConditions>
-            <not>
-                <tableExists tableName="nimble_user"/>
-            </not>
-        </preConditions>
-        <createTable tableName="nimble_user">
-            <column name="id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="username" type="varchar(100)"/>
-            <column name="password" type="varchar(100)"/>
-            <column name="admin" type="boolean"/>
-        </createTable>
-    </changeSet>
 </databaseChangeLog>
