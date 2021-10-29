@@ -14,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class ConfigureGlobal extends WebSecurityConfigurerAdapter {
+    //Login
     @Autowired
     NimbleUserService service;
 
