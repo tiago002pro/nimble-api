@@ -31,8 +31,10 @@ public class PersonAPI {
     @CrossOrigin
     @Transactional
     @RequestMapping(method = RequestMethod.GET, value = "/get/person-list/rule")
-    public ResponseEntity getListPersonByRule(@RequestParam(value = "rule") String rule, @RequestParam int page, @RequestParam int size) {
-        return ResponseEntity.ok(this.service.getPersonListByRule(rule, PageRequest.of(page,size)));
+    public ResponseEntity getListPersonByRule(@RequestParam(value = "rule") String rule,
+                                              @RequestParam(defaultValue = "1", required = false) int page,
+                                              @RequestParam(defaultValue = "10", required = false) int size) {
+        return ResponseEntity.ok(this.service.getPersonListByRule(rule, PageRequest.of(page > 0 ? --page : 0,size)));
     }
 }
 
