@@ -1,0 +1,90 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="9" author="tiagobarbosa02@outlook.com">
+        <preConditions>
+            <not>
+                <tableExists tableName="kanban"/>
+            </not>
+        </preConditions>
+        <createTable tableName="kanban">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(100)" />
+        </createTable>
+    </changeSet>
+
+    <changeSet id="10" author="tiagobarbosa02@outlook.com">
+        <preConditions>
+            <not>
+                <tableExists tableName="board"/>
+            </not>
+        </preConditions>
+        <createTable tableName="board">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(100)" />
+            <column name="kanban_id" type="bigint" >
+                <constraints foreignKeyName="fk_id_kanban_references_kanban" referencedTableName="kanban" referencedColumnNames="id" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="11" author="tiagobarbosa02@outlook.com">
+        <preConditions>
+            <not>
+                <tableExists tableName="list_card"/>
+            </not>
+        </preConditions>
+        <createTable tableName="list_card">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(100)" />
+            <column name="board_id" type="bigint" >
+                <constraints foreignKeyName="fk_id_board_references_board" referencedTableName="board" referencedColumnNames="id" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="12" author="tiagobarbosa02@outlook.com">
+        <preConditions>
+            <not>
+                <tableExists tableName="card"/>
+            </not>
+        </preConditions>
+        <createTable tableName="card">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(50)" />
+            <column name="description" type="TEXT" />
+            <column name="creation_date" type="DATE" />
+            <column name="list_card_id" type="bigint" >
+                <constraints foreignKeyName="fk_id_listCard_references_listCard" referencedTableName="list_card" referencedColumnNames="id" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="13" author="tiagobarbosa02@outlook.com">
+        <preConditions>
+            <not>
+                <tableExists tableName="activity"/>
+            </not>
+        </preConditions>
+        <createTable tableName="activity">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="activity" type="TEXT" />
+            <column name="execution_date" type="DATE" />
+            <column name="card_id" type="bigint" >
+                <constraints foreignKeyName="fk_id_card_references_card" referencedTableName="card" referencedColumnNames="id" />
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
