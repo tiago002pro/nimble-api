@@ -1,11 +1,14 @@
-package br.com.nimble.nimbleapi.model.Kanban.Card;
+package br.com.nimble.nimbleapi.model.Kanban;
 
 import br.com.nimble.nimbleapi.model.Kanban.ListCard;
 import lombok.Getter;
 import lombok.Setter;
+import net.minidev.json.annotate.JsonIgnore;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "card")
@@ -23,9 +26,10 @@ public class Card {
     private String description;
 
     @Column(name = "creation_date")
+    @CreationTimestamp
     private Date executionDate;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "list_card_id")
-    private ListCard listCard;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "card_id")
+    private List<Activity> activityList;
 }

@@ -9,7 +9,6 @@ import java.util.List;
 
 @Service
 public class KanbanService {
-
     @Autowired
     KanbanRepository repository;
 

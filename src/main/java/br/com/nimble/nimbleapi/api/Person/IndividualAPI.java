@@ -14,10 +14,8 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/person-individual")
 public class IndividualAPI {
-
     @Autowired
     IndividualService service;
-
     @Autowired
     PersonService personService;
 

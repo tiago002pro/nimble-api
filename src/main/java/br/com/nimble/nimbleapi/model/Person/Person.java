@@ -34,23 +34,23 @@ public class Person {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "person_id")
-    public List<Address> addresses = new ArrayList<>();
+    public List<Address> addresses;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "person_id")
-    public List<Phone> phones = new ArrayList<>();
+    public List<Phone> phones;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "person_id")
-    public List<Email> emails = new ArrayList<>();
+    public List<Email> emails;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "person_id")
-    public List<Document> documents = new ArrayList<>();
+    public List<Document> documents;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "person_id")
-    public List<Rule> ruleList = new ArrayList<>();
+    public List<Rule> ruleList;
 
     public Person (String name, List<Address> addresses, List<Phone> phones, List<Email> emails, List<Document> documents, List<Rule> ruleList) {
         this.name = name;

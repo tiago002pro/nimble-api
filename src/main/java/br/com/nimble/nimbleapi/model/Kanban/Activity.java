@@ -1,16 +1,17 @@
-package br.com.nimble.nimbleapi.model.Kanban.Card;
+package br.com.nimble.nimbleapi.model.Kanban;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "activities")
+@Table(name = "activity")
 @Getter
 @Setter
-public class Activities {
+public class Activity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,9 +20,6 @@ public class Activities {
     private String activity;
 
     @Column(name = "execution_date")
+    @CreationTimestamp
     private Date executionDate;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "card_id")
-    private Card card;
 }

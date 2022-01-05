@@ -12,7 +12,6 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/person-juridica")
 public class JuridicaAPI {
-
     @Autowired
     JuridicaService service;
 

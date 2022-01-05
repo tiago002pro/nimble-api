@@ -11,7 +11,6 @@ import java.util.Map;
 
 @Service
 public class IndividualService {
-
     @Autowired
     IndividualRepository repository;
 

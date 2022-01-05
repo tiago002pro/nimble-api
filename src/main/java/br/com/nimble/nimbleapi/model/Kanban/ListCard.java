@@ -2,8 +2,10 @@ package br.com.nimble.nimbleapi.model.Kanban;
 
 import lombok.Getter;
 import lombok.Setter;
+import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "list_card")
@@ -17,7 +19,7 @@ public class ListCard {
     @Column(name = "name")
     private String name;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "board_id")
-    private Board board;
+    @OneToMany
+    @JoinColumn(name = "list_card_id")
+    private List<Card> cardList;
 }
