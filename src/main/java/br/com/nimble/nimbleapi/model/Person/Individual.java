@@ -1,6 +1,5 @@
 package br.com.nimble.nimbleapi.model.Person;
 
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

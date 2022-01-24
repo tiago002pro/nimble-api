@@ -1,6 +1,5 @@
 package br.com.nimble.nimbleapi.model.Kanban;
 
-import br.com.nimble.nimbleapi.model.Kanban.ListCard;
 import lombok.Getter;
 import lombok.Setter;
 import net.minidev.json.annotate.JsonIgnore;
@@ -25,6 +24,9 @@ public class Card {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "index_card")
+    private Long indexCard;
+
     @Column(name = "creation_date")
     @CreationTimestamp
     private Date executionDate;
@@ -32,4 +34,8 @@ public class Card {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "card_id")
     private List<Activity> activityList;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "list_card_id")
+    private ListCard listCard;
 }

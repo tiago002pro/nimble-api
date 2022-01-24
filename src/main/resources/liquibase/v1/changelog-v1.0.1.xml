@@ -28,7 +28,7 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="name" type="VARCHAR(100)" />
-            <column name="kanban_id" type="bigint" >
+            <column name="kanban_id" type="BIGINT" >
                 <constraints foreignKeyName="fk_id_kanban_references_kanban" referencedTableName="kanban" referencedColumnNames="id" />
             </column>
         </createTable>
@@ -45,7 +45,8 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="name" type="VARCHAR(100)" />
-            <column name="board_id" type="bigint" >
+            <column name="index_list" type="BIGINT" />
+            <column name="board_id" type="BIGINT" >
                 <constraints foreignKeyName="fk_id_board_references_board" referencedTableName="board" referencedColumnNames="id" />
             </column>
         </createTable>
@@ -63,8 +64,9 @@
             </column>
             <column name="title" type="VARCHAR(50)" />
             <column name="description" type="TEXT" />
+            <column name="index_card" type="BIGINT" />
             <column name="creation_date" type="DATE" />
-            <column name="list_card_id" type="bigint" >
+            <column name="list_card_id" type="BIGINT" >
                 <constraints foreignKeyName="fk_id_listCard_references_listCard" referencedTableName="list_card" referencedColumnNames="id" />
             </column>
         </createTable>
@@ -82,7 +84,7 @@
             </column>
             <column name="activity" type="TEXT" />
             <column name="execution_date" type="DATE" />
-            <column name="card_id" type="bigint" >
+            <column name="card_id" type="BIGINT" >
                 <constraints foreignKeyName="fk_id_card_references_card" referencedTableName="card" referencedColumnNames="id" />
             </column>
         </createTable>
