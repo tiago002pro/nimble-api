@@ -1,6 +1,5 @@
 package br.com.nimble.nimbleapi.api.Kanban;
 
-import br.com.nimble.nimbleapi.model.Kanban.Card;
 import br.com.nimble.nimbleapi.model.Kanban.ListCard;
 import br.com.nimble.nimbleapi.service.Kanban.ListCardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,7 @@ public class ListCardAPI {
     @Transactional
     @RequestMapping(method = RequestMethod.GET, value = "/all")
     public List<ListCard> getAllListCards() {
-        return this.service.getAllListCards();
+        return this.service.getListCardOrderByIndexAsc();
     }
 
     @CrossOrigin
@@ -31,8 +30,23 @@ public class ListCardAPI {
 
     @CrossOrigin
     @Transactional
+    @RequestMapping(method = RequestMethod.GET, value = "/{index}")
+    public ListCard getListCardByIndex(@PathVariable Long index) {
+        return this.service.getListCardByIndex(index);
+    }
+
+    @CrossOrigin
+    @Transactional
     @RequestMapping(method = RequestMethod.PUT, value = "/change-index-list")
-    public ListCard changeIndexListCard(@RequestBody ListCard listCard, @RequestParam(value = "index") Long index) {
-        return this.service.changeIndexListCard(listCard, index);
+    public ListCard changeIndexListCard(@RequestParam(value = "previous") Integer previousIndex,
+                                        @RequestBody Integer currentIndex) {
+        return this.service.changeIndexListCard(Long.valueOf(previousIndex), Long.valueOf(currentIndex));
+    }
+
+    @CrossOrigin
+    @Transactional
+    @RequestMapping(method = RequestMethod.POST, value = "/newlist")
+    public ListCard newListCard(@RequestBody String name) {
+        return this.service.newCard(name);
     }
 }
