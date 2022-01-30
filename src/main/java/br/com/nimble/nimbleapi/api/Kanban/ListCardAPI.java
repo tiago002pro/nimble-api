@@ -46,7 +46,14 @@ public class ListCardAPI {
     @CrossOrigin
     @Transactional
     @RequestMapping(method = RequestMethod.POST, value = "/newlist")
-    public ListCard newListCard(@RequestBody String name) {
+    public List<ListCard> newListCard(@RequestBody String name) {
         return this.service.newCard(name);
+    }
+
+    @CrossOrigin
+    @Transactional
+    @RequestMapping(method = RequestMethod.DELETE, value = "/delete")
+    public List<ListCard> deleteListCard(@RequestParam(value = "index") Integer index) {
+        return this.service.deleteListByIndex(Long.valueOf(index));
     }
 }

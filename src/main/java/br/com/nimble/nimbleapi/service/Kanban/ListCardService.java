@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -57,14 +58,32 @@ public class ListCardService {
         return listCard;
     }
 
-     public ListCard newCard(String nameList) {
+     public List<ListCard> newCard(String nameList) {
         ListCard listCard = new ListCard();
-         Board board = this.boardService.getBoardById(1L);
+        Board board = this.boardService.getBoardById(1L);
 
         listCard.setName(nameList);
         listCard.setIndexList(this.repository.findLastListIndex() + 1L);
         board.getListCardList().add(listCard);
         this.repository.save(listCard);
-        return listCard;
+        return board.getListCardList();
+    }
+
+    public Long getLastListIndex() {
+        return this.repository.findLastListIndex();
+    }
+
+    public List<ListCard> deleteListByIndex(Long index) {
+        ListCard listCardDelete = this.getListCardByIndex(index);
+        this.repository.deleteAllById(Collections.singleton(listCardDelete.getId()));
+
+        for (long x = index + 1L; x <= this.getLastListIndex(); x++) {
+            ListCard listCard = this.getListCardByIndex(x);
+            listCard.setIndexList(x-1L);
+            this.repository.save(listCard);
+        }
+
+        Board board = this.boardService.getBoardById(1L);
+        return board.getListCardList();
     }
 }
