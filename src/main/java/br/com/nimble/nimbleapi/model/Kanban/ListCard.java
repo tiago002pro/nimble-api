@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "list_card")
@@ -20,7 +21,7 @@ public class ListCard {
     @Column(name = "index_list")
     private Long indexList;
 
-//    @OneToMany
-//    @JoinColumn(name = "list_card_id")
-//    private List<Card> cardList;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "list_card_id")
+    private List<Card> cardList;
 }

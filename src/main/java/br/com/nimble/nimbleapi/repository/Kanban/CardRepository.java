@@ -24,4 +24,13 @@ public interface CardRepository extends JpaRepository<Card, Long> {
                     " FROM card c " +
                     " WHERE c.index_card = :index")
     Card findCardByIndex(@Param("index") Long index);
+
+    @Query(nativeQuery = true,
+            value = " SELECT " +
+                    "   c.index_card " +
+                    " FROM card c " +
+                    " ORDER BY " +
+                    "   c.index_card " +
+                    " DESC LIMIT 1")
+    Long findLastIndexCard();
 }

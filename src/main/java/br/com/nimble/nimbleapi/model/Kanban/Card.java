@@ -1,8 +1,9 @@
 package br.com.nimble.nimbleapi.model.Kanban;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import net.minidev.json.annotate.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -13,6 +14,8 @@ import java.util.List;
 @Table(name = "card")
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,7 +38,7 @@ public class Card {
     @JoinColumn(name = "card_id")
     private List<Activity> activityList;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "list_card_id")
-    private ListCard listCard;
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "list_card_id")
+//    private ListCard listCard;
 }

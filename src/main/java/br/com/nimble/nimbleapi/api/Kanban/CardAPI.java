@@ -16,9 +16,10 @@ public class CardAPI {
 
     @CrossOrigin
     @Transactional
-    @RequestMapping(method = RequestMethod.POST, value = "/new")
-    public Card newCard() {
-        return this.service.newCard();
+    @RequestMapping(method = RequestMethod.POST, value = "/listCard/{index}/new")
+    public Card newCard(@PathVariable Long index,
+                        @RequestParam(value = "title") String cardTitle) {
+        return this.service.newCard(Long.valueOf(index), cardTitle);
     }
 
     @CrossOrigin
@@ -26,13 +27,6 @@ public class CardAPI {
     @RequestMapping(method = RequestMethod.GET, value = "/all")
     public List<Card> getAllCards() {
         return this.service.getAllCards();
-    }
-
-    @CrossOrigin
-    @Transactional
-    @RequestMapping(method = RequestMethod.PUT, value = "/change")
-    public Card changeIdlistCard() {
-        return this.service.changeIdlistCard(2L, 3L);
     }
 
     @CrossOrigin
@@ -45,7 +39,7 @@ public class CardAPI {
     @CrossOrigin
     @Transactional
     @RequestMapping(method = RequestMethod.PUT, value = "/change-index-card")
-    public Card changeIndexCard(@RequestBody Card card, @RequestParam(value = "index") Long index) {
-        return this.service.changeIndexCard(card, index);
+    public Card changeIndexCard(@RequestParam(value = "previous") Integer previousIndex, @RequestBody Integer currentIndex) {
+        return this.service.changeIndexCard(Long.valueOf(previousIndex), Long.valueOf(currentIndex));
     }
 }

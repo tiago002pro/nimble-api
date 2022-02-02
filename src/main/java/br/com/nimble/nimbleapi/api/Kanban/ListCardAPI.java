@@ -23,9 +23,9 @@ public class ListCardAPI {
 
     @CrossOrigin
     @Transactional
-    @RequestMapping(method = RequestMethod.GET, value = "/id")
-    public ListCard getListCardById() {
-        return this.service.getById(1L);
+    @RequestMapping(method = RequestMethod.GET, value = "/id/{id}")
+    public ListCard getListCardById(@PathVariable Long id) {
+        return this.service.getById(id);
     }
 
     @CrossOrigin

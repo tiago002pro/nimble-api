@@ -16,19 +16,12 @@ public class CardService {
     @Autowired
     ListCardService listCardService;
 
-    public Card newCard() {
+    public Card newCard(Long indexList, String cardTitle) {
+        ListCard listCard = this.listCardService.getListCardByIndex(indexList);
         Card card = new Card();
-        ListCard listCard = this.listCardService.getById(1L);
-        card.setTitle("Teste");
-//        listCard.getCardList().add(card);
-        this.repository.save(card);
-        return card;
-    }
-
-    public Card changeIdlistCard(Long listCardId, Long cardId) {
-        Card card = this.getById(cardId);
-        ListCard listCard = this.listCardService.getById(listCardId);
-        card.setListCard(listCard);
+        card.setTitle(cardTitle);
+        card.setIndexCard(this.getLastIndexCard() + 1L);
+        listCard.getCardList().add(card);
         this.repository.save(card);
         return card;
     }
@@ -49,16 +42,18 @@ public class CardService {
         return this.repository.findCardByIndex(index);
     }
 
-    public Card changeIndexCard(Card card, Long index) {
+    public Card changeIndexCard(Long previousIndex, Long currentIndex) {
+        Card card = this.getCardByIndex(previousIndex);
+
         List<Card> cardListForChange = new ArrayList<>();
-        if (index < card.getIndexCard()) {
-            for(long x = index; x < card.getIndexCard(); x ++) {
+        if (currentIndex < card.getIndexCard()) {
+            for(long x = currentIndex; x < card.getIndexCard(); x ++) {
                 Card cardChange = this.getCardByIndex(x);
                 cardListForChange.add(cardChange);
             }
             cardListForChange.stream().forEach(item -> item.setIndexCard(item.getIndexCard() + 1L));
         } else {
-            for(long x = card.getIndexCard() + 1L; x <= index; x ++) {
+            for(long x = card.getIndexCard() + 1L; x <= currentIndex; x ++) {
                 Card cardChange = this.getCardByIndex(x);
                 cardListForChange.add(cardChange);
             }
@@ -66,8 +61,12 @@ public class CardService {
         }
 
         this.repository.saveAll(cardListForChange);
-        card.setIndexCard(index);
+        card.setIndexCard(currentIndex);
         this.repository.save(card);
         return card;
+    }
+
+    public Long getLastIndexCard() {
+        return this.repository.findLastIndexCard();
     }
 }
