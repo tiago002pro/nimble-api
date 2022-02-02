@@ -16,14 +16,14 @@ public class CardService {
     @Autowired
     ListCardService listCardService;
 
-    public Card newCard(Long indexList, String cardTitle) {
+    public ListCard newCard(Long indexList, String cardTitle) {
         ListCard listCard = this.listCardService.getListCardByIndex(indexList);
         Card card = new Card();
         card.setTitle(cardTitle);
         card.setIndexCard(this.getLastIndexCard() + 1L);
         listCard.getCardList().add(card);
         this.repository.save(card);
-        return card;
+        return listCard;
     }
 
     public List<Card> getAllCards() {

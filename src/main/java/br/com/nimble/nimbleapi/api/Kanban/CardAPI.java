@@ -1,6 +1,7 @@
 package br.com.nimble.nimbleapi.api.Kanban;
 
 import br.com.nimble.nimbleapi.model.Kanban.Card;
+import br.com.nimble.nimbleapi.model.Kanban.ListCard;
 import br.com.nimble.nimbleapi.service.Kanban.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,8 +18,8 @@ public class CardAPI {
     @CrossOrigin
     @Transactional
     @RequestMapping(method = RequestMethod.POST, value = "/listCard/{index}/new")
-    public Card newCard(@PathVariable Long index,
-                        @RequestParam(value = "title") String cardTitle) {
+    public ListCard newCard(@PathVariable Long index,
+                            @RequestBody String cardTitle) {
         return this.service.newCard(Long.valueOf(index), cardTitle);
     }
 
