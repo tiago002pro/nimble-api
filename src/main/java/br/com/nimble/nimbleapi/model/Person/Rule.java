@@ -1,6 +1,5 @@
 package br.com.nimble.nimbleapi.model.Person;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
