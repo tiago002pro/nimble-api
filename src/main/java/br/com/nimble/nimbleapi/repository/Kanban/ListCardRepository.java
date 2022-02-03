@@ -10,12 +10,20 @@ import java.util.List;
 
 @Repository
 public interface ListCardRepository extends JpaRepository<ListCard, Long> {
+
     @Query(nativeQuery = true,
     value = " SELECT " +
             "   * " +
             " FROM list_card lc " +
             " WHERE lc.index_list = :index ")
     ListCard findListCardByIndex(@Param("index") Long index);
+
+    @Query(nativeQuery = true,
+            value = " SELECT " +
+                    "   * " +
+                    " FROM list_card lc " +
+                    " WHERE lc.name = :name ")
+    ListCard findListCardByName(@Param("name") String name);
 
     @Query(nativeQuery = true, value = "SELECT * FROM list_card lc ORDER BY lc.index_list")
     List<ListCard> findAllListCardOrderByIndex();

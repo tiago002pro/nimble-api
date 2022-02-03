@@ -22,15 +22,17 @@ public interface CardRepository extends JpaRepository<Card, Long> {
             value = " SELECT " +
                     "   * " +
                     " FROM card c " +
-                    " WHERE c.index_card = :index")
-    Card findCardByIndex(@Param("index") Long index);
+                    " WHERE c.index_card = :indexCard" +
+                    "   AND c.list_card_id = :indexList")
+    Card findCardByIndex(@Param("indexCard") Long indexCard, @Param("indexList") Long indexList);
 
     @Query(nativeQuery = true,
             value = " SELECT " +
                     "   c.index_card " +
                     " FROM card c " +
+                    " WHERE c.list_card_id = :indexList" +
                     " ORDER BY " +
                     "   c.index_card " +
                     " DESC LIMIT 1")
-    Long findLastIndexCard();
+    Long findLastIndexCard(@Param("indexList") Long indexList);
 }
