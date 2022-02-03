@@ -34,6 +34,10 @@ public class ListCardService {
         return this.repository.findListCardByIndex(index);
     }
 
+    public ListCard getListCardByName(String name) {
+        return this.repository.findListCardByName(name);
+    }
+
     public ListCard changeIndexListCard(Long previousIndex, Long currentIndex) {
        ListCard listCard = this.getListCardByIndex(previousIndex);
 

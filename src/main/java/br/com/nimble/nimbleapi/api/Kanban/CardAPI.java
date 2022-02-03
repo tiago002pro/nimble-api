@@ -1,6 +1,7 @@
 package br.com.nimble.nimbleapi.api.Kanban;
 
 import br.com.nimble.nimbleapi.model.Kanban.Card;
+import br.com.nimble.nimbleapi.model.Kanban.ListCard;
 import br.com.nimble.nimbleapi.service.Kanban.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,8 +18,8 @@ public class CardAPI {
     @CrossOrigin
     @Transactional
     @RequestMapping(method = RequestMethod.POST, value = "/listCard/{index}/new")
-    public Card newCard(@PathVariable Long index,
-                        @RequestParam(value = "title") String cardTitle) {
+    public ListCard newCard(@PathVariable Long index,
+                            @RequestBody String cardTitle) {
         return this.service.newCard(Long.valueOf(index), cardTitle);
     }
 
@@ -39,7 +40,19 @@ public class CardAPI {
     @CrossOrigin
     @Transactional
     @RequestMapping(method = RequestMethod.PUT, value = "/change-index-card")
-    public Card changeIndexCard(@RequestParam(value = "previous") Integer previousIndex, @RequestBody Integer currentIndex) {
-        return this.service.changeIndexCard(Long.valueOf(previousIndex), Long.valueOf(currentIndex));
+    public ListCard changeIndexCard(@RequestParam(value = "previous") Integer previousIndex,
+                                    @RequestParam(value = "current") Integer currentIndex,
+                                    @RequestBody Integer indexList) {
+        return this.service.changeIndexCard(Long.valueOf(previousIndex), Long.valueOf(currentIndex), Long.valueOf(indexList));
+    }
+
+    @CrossOrigin
+    @Transactional
+    @RequestMapping(method = RequestMethod.PUT, value = "/change-card-ofList")
+    public List<ListCard> movCardBetweenLists(@RequestParam(value = "nameListPrevious") String nameListPrevious,
+                                              @RequestParam(value = "nameListCurrent") String nameListCurrent,
+                                              @RequestParam(value = "indexCardPrevious") Integer indexCardPrevious,
+                                              @RequestBody Integer indexCardCurrent) {
+        return this.service.movCardBetweenLists(nameListPrevious, nameListCurrent, Long.valueOf(indexCardPrevious), Long.valueOf(indexCardCurrent));
     }
 }
