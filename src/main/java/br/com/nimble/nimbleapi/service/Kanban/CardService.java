@@ -93,7 +93,6 @@ public class CardService {
         }
 
         for (long x = this.getLastIndexCard(listCardCurrent.getIndexList()); x >= indexCardCurrent; x--) {
-                this.repository.flush();
                 Card cardChange = this.getCardByIndex(x, listCardCurrent.getIndexList());
                 cardChange.setIndexCard(x + 1L);
                 cardListToSave.add(cardChange);
@@ -104,7 +103,6 @@ public class CardService {
         listCardCurrent.getCardList().add(card);
         this.repository.save(card);
 
-        Board board = this.boardService.getBoardById(1L);
-        return board.getListCardList();
+        return this.listCardService.getListCardOrderByIndexAsc();
     }
 }

@@ -47,7 +47,7 @@ public class ListCardAPI {
     @Transactional
     @RequestMapping(method = RequestMethod.POST, value = "/newlist")
     public List<ListCard> newListCard(@RequestBody String name) {
-        return this.service.newCard(name);
+        return this.service.newListCard(name);
     }
 
     @CrossOrigin
