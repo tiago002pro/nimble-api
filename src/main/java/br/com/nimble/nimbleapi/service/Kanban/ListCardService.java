@@ -1,6 +1,7 @@
 package br.com.nimble.nimbleapi.service.Kanban;
 
 import br.com.nimble.nimbleapi.model.Kanban.Board;
+import br.com.nimble.nimbleapi.model.Kanban.Card;
 import br.com.nimble.nimbleapi.model.Kanban.ListCard;
 import br.com.nimble.nimbleapi.repository.Kanban.ListCardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +15,10 @@ import java.util.List;
 public class ListCardService {
     @Autowired
     ListCardRepository repository;
-
     @Autowired
     BoardService boardService;
+    @Autowired
+    ListCardService listCardService;
 
     public ListCard getById(Long id) {
         return this.repository.findById(id).get();
@@ -62,19 +64,26 @@ public class ListCardService {
         return listCard;
     }
 
-     public List<ListCard> newCard(String nameList) {
+     public List<ListCard> newListCard(String nameList) {
         ListCard listCard = new ListCard();
         Board board = this.boardService.getBoardById(1L);
 
         listCard.setName(nameList);
-        listCard.setIndexList(this.repository.findLastListIndex() + 1L);
+        listCard.setIndexList(this.getLastListIndex() + 1L);
+        listCard.setCardList(new ArrayList<>());
         board.getListCardList().add(listCard);
         this.repository.save(listCard);
-        return board.getListCardList();
+        return this.listCardService.getListCardOrderByIndexAsc();
     }
 
     public Long getLastListIndex() {
-        return this.repository.findLastListIndex();
+        Long lastIndex = this.repository.findLastListIndex();
+
+        if (lastIndex == null) {
+            return 0L;
+        } else {
+            return lastIndex;
+        }
     }
 
     public List<ListCard> deleteListByIndex(Long index) {
@@ -86,8 +95,6 @@ public class ListCardService {
             listCard.setIndexList(x-1L);
             this.repository.save(listCard);
         }
-
-        Board board = this.boardService.getBoardById(1L);
-        return board.getListCardList();
+        return this.listCardService.getListCardOrderByIndexAsc();
     }
 }

@@ -20,17 +20,19 @@ public interface CardRepository extends JpaRepository<Card, Long> {
 
     @Query(nativeQuery = true,
             value = " SELECT " +
-                    "   * " +
+                    "   c.* " +
                     " FROM card c " +
+                    "   INNER JOIN list_card lc ON lc.id = c.list_card_id" +
                     " WHERE c.index_card = :indexCard" +
-                    "   AND c.list_card_id = :indexList")
+                    "   AND lc.index_list = :indexList")
     Card findCardByIndex(@Param("indexCard") Long indexCard, @Param("indexList") Long indexList);
 
     @Query(nativeQuery = true,
             value = " SELECT " +
                     "   c.index_card " +
                     " FROM card c " +
-                    " WHERE c.list_card_id = :indexList" +
+                    "   INNER JOIN list_card lc ON lc.id = c.list_card_id" +
+                    " WHERE lc.index_list = :indexList" +
                     " ORDER BY " +
                     "   c.index_card " +
                     " DESC LIMIT 1")
