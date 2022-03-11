@@ -89,4 +89,50 @@
             </column>
         </createTable>
     </changeSet>
+
+    <changeSet id="14" author="tiagobarbosa02@outlook.com">
+        <preConditions>
+            <not>
+                <tableExists tableName="finance_category"/>
+            </not>
+        </preConditions>
+        <createTable tableName="finance_category">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="category" type="VARCHAR(50)" />
+            <column name="type" type="VARCHAR(10)" />
+        </createTable>
+    </changeSet>
+
+    <changeSet id="15" author="tiagobarbosa02@outlook.com">
+        <preConditions>
+            <not>
+                <tableExists tableName="title"/>
+            </not>
+        </preConditions>
+        <createTable tableName="title">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="doc_number" type="VARCHAR(20)" />
+            <column name="emission_date" type="DATE" />
+            <column name="value" type="DOUBLE" />
+            <column name="parcel" type="BOOLEAN" />
+            <column name="parcel_number" type="INTEGER" />
+            <column name="duo_date" type="DATE" />
+            <column name="type" type="VARCHAR(10)" />
+            <column name="historic" type="VARCHAR(500)" />
+            <column name="status" type="VARCHAR(20)" />
+            <column name="pay_day" type="DATE" />
+            <column name="paid" type="BOOLEAN" />
+            <column name="person_id" type="BIGINT" >
+                <constraints foreignKeyName="fk_id_person_references_person" referencedTableName="person" referencedColumnNames="id" />
+            </column>
+            <column name="category" type="VARCHAR(20)" />
+<!--            <column name="category_id" type="BIGINT" >-->
+<!--                <constraints foreignKeyName="fk_id_category_references_category" referencedTableName="category" referencedColumnNames="id" />-->
+<!--            </column>-->
+        </createTable>
+    </changeSet>
 </databaseChangeLog>
