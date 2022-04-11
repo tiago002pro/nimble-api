@@ -129,10 +129,32 @@
             <column name="person_id" type="BIGINT" >
                 <constraints foreignKeyName="fk_id_person_references_person" referencedTableName="person" referencedColumnNames="id" />
             </column>
-            <column name="category" type="VARCHAR(20)" />
-<!--            <column name="category_id" type="BIGINT" >-->
-<!--                <constraints foreignKeyName="fk_id_category_references_category" referencedTableName="category" referencedColumnNames="id" />-->
-<!--            </column>-->
+            <column name="category_id" type="BIGINT" >
+                <constraints foreignKeyName="fk_id_category_references_category" referencedTableName="finance_category" referencedColumnNames="id" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="16" author="tiagobarbosa02@outlook.com">
+        <preConditions>
+            <not>
+                <tableExists tableName="account"/>
+            </not>
+        </preConditions>
+        <createTable tableName="account">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(100)" />
+            <column name="account" type="VARCHAR(10)" />
+            <column name="account_dv" type="VARCHAR(5)" />
+            <column name="agency" type="VARCHAR(10)" />
+            <column name="agency_dv" type="VARCHAR(5)" />
+            <column name="banck_id" type="VARCHAR(10)" />
+            <column name="account_type" type="VARCHAR(20)" />
+            <column name="active" type="BOOLEAN" />
+            <column name="holder" type="VARCHAR(100)" />
+            <column name="holder_document" type="VARCHAR(20)" />
         </createTable>
     </changeSet>
 </databaseChangeLog>

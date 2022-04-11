@@ -105,4 +105,8 @@ public class CardService {
 
         return this.listCardService.getListCardOrderByIndexAsc();
     }
+
+    public Card updateCard(Card card) {
+        return this.repository.save(card);
+    }
 }
