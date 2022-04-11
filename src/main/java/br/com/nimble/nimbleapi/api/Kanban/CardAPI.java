@@ -55,4 +55,11 @@ public class CardAPI {
                                               @RequestBody Integer indexCardCurrent) {
         return this.service.movCardBetweenLists(nameListPrevious, nameListCurrent, Long.valueOf(indexCardPrevious), Long.valueOf(indexCardCurrent));
     }
+
+    @CrossOrigin
+    @Transactional
+    @RequestMapping(method = RequestMethod.POST, value = "/update-card")
+    public Card updateCard(@RequestBody Card card) {
+        return this.service.updateCard(card);
+    }
 }

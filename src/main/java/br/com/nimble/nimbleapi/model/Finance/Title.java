@@ -40,10 +40,7 @@ public class Title {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "person_id")
     private Person person;
-
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "category_id")
-    @Column(name = "category")
-    private String category;
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "category_id")
+    private Category category;
 }
