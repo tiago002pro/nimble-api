@@ -30,7 +30,5 @@ public class TitleAPI {
                                           @RequestParam(defaultValue = "1", required = false) int page,
                                           @RequestParam(defaultValue = "10", required = false) int size) {
         return ResponseEntity.ok(this.service.getTitlesByType(type, PageRequest.of(page > 0 ? --page : 0, size)));
-
-
     }
 }

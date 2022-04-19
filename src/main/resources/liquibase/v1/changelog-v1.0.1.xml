@@ -100,7 +100,7 @@
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="category" type="VARCHAR(50)" />
+            <column name="name" type="VARCHAR(50)" />
             <column name="type" type="VARCHAR(10)" />
         </createTable>
     </changeSet>
@@ -145,16 +145,19 @@
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="name" type="VARCHAR(100)" />
-            <column name="account" type="VARCHAR(10)" />
-            <column name="account_dv" type="VARCHAR(5)" />
+            <column name="account_name" type="VARCHAR(50)" />
+            <column name="holder" type="VARCHAR(50)" />
+            <column name="holder_document" type="VARCHAR(20)" />
+            <column name="limit" type="DOUBLE" />
+            <column name="modality" type="VARCHAR(20)" />
+            <column name="bank" type="VARCHAR(50)" />
+            <column name="type" type="VARCHAR(20)" />
             <column name="agency" type="VARCHAR(10)" />
             <column name="agency_dv" type="VARCHAR(5)" />
-            <column name="banck_id" type="VARCHAR(10)" />
-            <column name="account_type" type="VARCHAR(20)" />
+            <column name="account" type="VARCHAR(10)" />
+            <column name="account_dv" type="VARCHAR(5)" />
+            <column name="balance" type="DOUBLE" />
             <column name="active" type="BOOLEAN" />
-            <column name="holder" type="VARCHAR(100)" />
-            <column name="holder_document" type="VARCHAR(20)" />
         </createTable>
     </changeSet>
 </databaseChangeLog>

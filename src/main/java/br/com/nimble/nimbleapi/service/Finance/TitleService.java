@@ -9,7 +9,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class TitleService {
@@ -18,9 +17,13 @@ public class TitleService {
     @Autowired
     PersonService personService;
 
+    @Autowired
+    CategoryService categoryService;
+
     public List<Title> createTitle(List<Title>  resource) {
         resource.forEach((title) -> {
             title.setPerson(this.personService.getById(title.getPerson().getId()));
+            title.setCategory(this.categoryService.getCategoryById(title.getCategory().getId()));
         });
         return this.repository.saveAll(resource);
     }

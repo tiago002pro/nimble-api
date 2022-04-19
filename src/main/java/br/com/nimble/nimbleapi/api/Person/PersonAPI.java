@@ -37,4 +37,3 @@ public class PersonAPI {
         return ResponseEntity.ok(this.service.getPersonListByRule(rule, PageRequest.of(page > 0 ? --page : 0,size)));
     }
 }
-
