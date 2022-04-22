@@ -24,9 +24,8 @@ public class AccountAPI {
     @CrossOrigin
     @Transactional
     @RequestMapping(method = RequestMethod.GET, value = "/list")
-    public ResponseEntity getAllAccounts(@RequestParam(value = "type") String type,
-                                          @RequestParam(defaultValue = "1", required = false) int page,
-                                          @RequestParam(defaultValue = "10", required = false) int size) {
+    public ResponseEntity getAllAccounts(@RequestParam(defaultValue = "1", required = false) int page,
+                                         @RequestParam(defaultValue = "10", required = false) int size) {
         return ResponseEntity.ok(this.service.getAllAccounts(PageRequest.of(page > 0 ? --page : 0, size)));
     }
 }
