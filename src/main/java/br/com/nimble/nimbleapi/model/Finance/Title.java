@@ -43,4 +43,7 @@ public class Title {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "category_id")
     private Category category;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "account_id")
+    private Account account;
 }

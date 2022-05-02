@@ -23,6 +23,13 @@ public class AccountAPI {
 
     @CrossOrigin
     @Transactional
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+    public ResponseEntity getByid(@PathVariable Long id)  {
+        return ResponseEntity.ok(this.service.getById(id));
+    }
+
+    @CrossOrigin
+    @Transactional
     @RequestMapping(method = RequestMethod.GET, value = "/list")
     public ResponseEntity getAllAccounts(@RequestParam(defaultValue = "1", required = false) int page,
                                          @RequestParam(defaultValue = "10", required = false) int size) {

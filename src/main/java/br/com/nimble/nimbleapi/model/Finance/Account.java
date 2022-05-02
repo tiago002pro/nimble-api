@@ -19,7 +19,7 @@ public class Account {
     private String holder;
     @Column(name = "holder_document")
     private String holderDocument;
-    @Column(name = "limit")
+    @Column(name = "limit_value")
     private Double limit;
     @Column(name = "modality")
     private String modality;
