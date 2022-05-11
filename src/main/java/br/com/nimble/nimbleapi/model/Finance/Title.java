@@ -1,6 +1,7 @@
 package br.com.nimble.nimbleapi.model.Finance;
 
 import br.com.nimble.nimbleapi.model.Person.Person;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,9 +9,11 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Title")
 @Getter
 @Setter
+@AllArgsConstructor
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "Title")
 public class Title {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,4 +49,8 @@ public class Title {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "account_id")
     private Account account;
+
+    public Title() {
+
+    }
 }

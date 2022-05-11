@@ -16,9 +16,10 @@ public class TitleService {
     TitleRepository repository;
     @Autowired
     PersonService personService;
-
     @Autowired
     CategoryService categoryService;
+    @Autowired
+    AccountService accountService;
 
     public List<Title> createTitle(List<Title>  resource) {
         resource.forEach((title) -> {
@@ -30,5 +31,17 @@ public class TitleService {
 
     public Page<Title>  getTitlesByType(String type, Pageable pageable) {
         return this.repository.findTitlesByType(type, pageable);
+    }
+
+    public Title getById(Long id) {
+        return this.repository.findById(id).get();
+    }
+
+    public List<Title> paidTitle(List<Title> titleList) {
+        titleList.forEach((title) -> {
+            title.setPerson(this.personService.getById(title.getPerson().getId()));
+            title.setCategory(this.categoryService.getCategoryById(title.getCategory().getId()));
+        });
+        return this.repository.saveAll(titleList);
     }
 }
