@@ -20,4 +20,8 @@ public class AccountService {
     public Page<Account> getAllAccounts(Pageable pageable) {
         return this.repository.findAll(pageable);
     }
+
+    public Account getById(Long id) {
+        return this.repository.findById(id).get();
+    }
 }

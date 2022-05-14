@@ -14,13 +14,13 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "account_name")
-    private String AccountName;
+    private String accountName;
     @Column(name = "holder")
     private String holder;
     @Column(name = "holder_document")
     private String holderDocument;
-    @Column(name = "limit")
-    private Double limit;
+    @Column(name = "limit_value")
+    private Double limitValue;
     @Column(name = "modality")
     private String modality;
     @Column(name = "bank")
