@@ -44,4 +44,8 @@ public class TitleService {
         });
         return this.repository.saveAll(titleList);
     }
+
+    public Page<Title> getTitlesByAccountId(Long accountId, Pageable pageable) {
+        return this.repository.findTitlesByAccountId(accountId, pageable);
+    }
 }
