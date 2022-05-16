@@ -24,10 +24,10 @@ public class Title {
     private Date emissionDate;
     @Column(name = "value")
     private Double value;
-    @Column(name = "parcel")
-    private Boolean parcel;
     @Column(name = "parcel_number")
     private Integer parcelNumber;
+    @Column(name = "parcel")
+    private String parcel;
     @Column(name = "duo_date")
     private Date duoDate;
     @Column(name = "historic")
