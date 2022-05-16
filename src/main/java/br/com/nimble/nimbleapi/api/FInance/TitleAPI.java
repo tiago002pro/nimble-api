@@ -30,7 +30,21 @@ public class TitleAPI {
                                           @RequestParam(defaultValue = "1", required = false) int page,
                                           @RequestParam(defaultValue = "10", required = false) int size) {
         return ResponseEntity.ok(this.service.getTitlesByType(type, PageRequest.of(page > 0 ? --page : 0, size)));
+    }
 
+    @CrossOrigin
+    @Transactional
+    @RequestMapping(method = RequestMethod.PUT, value = "/paid")
+    public ResponseEntity paidTitle(@RequestBody List<Title> resource)  {
+        return ResponseEntity.ok(this.service.paidTitle(resource));
+    }
 
+    @CrossOrigin
+    @Transactional
+    @RequestMapping(method = RequestMethod.GET, value = "/extract")
+    public ResponseEntity getTitlesByAccountId(@RequestParam(value = "accountId") Long accountId,
+                                          @RequestParam(defaultValue = "1", required = false) int page,
+                                          @RequestParam(defaultValue = "10", required = false) int size) {
+        return ResponseEntity.ok(this.service.getTitlesByAccountId(accountId, PageRequest.of(page > 0 ? --page : 0, size)));
     }
 }

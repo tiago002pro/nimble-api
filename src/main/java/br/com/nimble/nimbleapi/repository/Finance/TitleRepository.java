@@ -8,10 +8,20 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.Map;
-
 @Repository
 public interface TitleRepository extends JpaRepository<Title, Long> {
-    @Query(nativeQuery = true, value = "SELECT * FROM title t WHERE t.type = :type")
+    @Query(nativeQuery = true,
+            value = " SELECT " +
+                    "   * " +
+                    " FROM title t " +
+                    " WHERE t.type = :type " +
+                    " ORDER BY t.duo_date ")
     Page<Title> findTitlesByType(@Param("type") String type, Pageable pageable);
+
+    @Query(nativeQuery = true,
+            value = " SELECT " +
+                    "   * " +
+                    " FROM title t " +
+                    " WHERE t.account_id = :accountId ")
+    Page<Title> findTitlesByAccountId(@Param("accountId") Long accountId, Pageable pageable);
 }

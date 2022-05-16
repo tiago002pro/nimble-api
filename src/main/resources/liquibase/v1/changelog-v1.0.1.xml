@@ -100,12 +100,38 @@
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="category" type="VARCHAR(50)" />
+            <column name="name" type="VARCHAR(50)" />
             <column name="type" type="VARCHAR(10)" />
         </createTable>
     </changeSet>
 
     <changeSet id="15" author="tiagobarbosa02@outlook.com">
+        <preConditions>
+            <not>
+                <tableExists tableName="account"/>
+            </not>
+        </preConditions>
+        <createTable tableName="account">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="account_name" type="VARCHAR(50)" />
+            <column name="holder" type="VARCHAR(50)" />
+            <column name="holder_document" type="VARCHAR(20)" />
+            <column name="limit_value" type="DOUBLE" />
+            <column name="modality" type="VARCHAR(20)" />
+            <column name="bank" type="VARCHAR(50)" />
+            <column name="type" type="VARCHAR(20)" />
+            <column name="agency" type="VARCHAR(10)" />
+            <column name="agency_dv" type="VARCHAR(5)" />
+            <column name="account" type="VARCHAR(10)" />
+            <column name="account_dv" type="VARCHAR(5)" />
+            <column name="balance" type="DOUBLE" />
+            <column name="active" type="BOOLEAN" />
+        </createTable>
+    </changeSet>
+
+    <changeSet id="16" author="tiagobarbosa02@outlook.com">
         <preConditions>
             <not>
                 <tableExists tableName="title"/>
@@ -118,8 +144,8 @@
             <column name="doc_number" type="VARCHAR(20)" />
             <column name="emission_date" type="DATE" />
             <column name="value" type="DOUBLE" />
-            <column name="parcel" type="BOOLEAN" />
             <column name="parcel_number" type="INTEGER" />
+            <column name="parcel" type="VARCHAR(10)" />
             <column name="duo_date" type="DATE" />
             <column name="type" type="VARCHAR(10)" />
             <column name="historic" type="VARCHAR(500)" />
@@ -132,29 +158,9 @@
             <column name="category_id" type="BIGINT" >
                 <constraints foreignKeyName="fk_id_category_references_category" referencedTableName="finance_category" referencedColumnNames="id" />
             </column>
-        </createTable>
-    </changeSet>
-
-    <changeSet id="16" author="tiagobarbosa02@outlook.com">
-        <preConditions>
-            <not>
-                <tableExists tableName="account"/>
-            </not>
-        </preConditions>
-        <createTable tableName="account">
-            <column name="id" type="BIGINT" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false"/>
+            <column name="account_id" type="BIGINT" >
+                <constraints foreignKeyName="fk_id_account_references_account" referencedTableName="account" referencedColumnNames="id" />
             </column>
-            <column name="name" type="VARCHAR(100)" />
-            <column name="account" type="VARCHAR(10)" />
-            <column name="account_dv" type="VARCHAR(5)" />
-            <column name="agency" type="VARCHAR(10)" />
-            <column name="agency_dv" type="VARCHAR(5)" />
-            <column name="banck_id" type="VARCHAR(10)" />
-            <column name="account_type" type="VARCHAR(20)" />
-            <column name="active" type="BOOLEAN" />
-            <column name="holder" type="VARCHAR(100)" />
-            <column name="holder_document" type="VARCHAR(20)" />
         </createTable>
     </changeSet>
 </databaseChangeLog>
