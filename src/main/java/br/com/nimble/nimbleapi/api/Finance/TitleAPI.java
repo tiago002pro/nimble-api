@@ -1,4 +1,4 @@
-package br.com.nimble.nimbleapi.api.FInance;
+package br.com.nimble.nimbleapi.api.Finance;
 
 import br.com.nimble.nimbleapi.model.Finance.Title;
 import br.com.nimble.nimbleapi.service.Finance.TitleService;

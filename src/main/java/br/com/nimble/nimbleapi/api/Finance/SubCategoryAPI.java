@@ -1,4 +1,4 @@
-package br.com.nimble.nimbleapi.api.FInance;
+package br.com.nimble.nimbleapi.api.Finance;
 
 import br.com.nimble.nimbleapi.service.Finance.SubCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
