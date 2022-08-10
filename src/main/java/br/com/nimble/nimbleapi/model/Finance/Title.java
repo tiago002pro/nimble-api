@@ -44,8 +44,8 @@ public class Title {
     @JoinColumn(name = "person_id")
     private Person person;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "category_id")
-    private Category category;
+    @JoinColumn(name = "subcategory_id")
+    private SubCategory subCategory;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "account_id")
     private Account account;

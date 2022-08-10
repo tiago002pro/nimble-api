@@ -1,5 +1,6 @@
 package br.com.nimble.nimbleapi.service.Finance;
 
+import br.com.nimble.nimbleapi.model.Finance.SubCategory;
 import br.com.nimble.nimbleapi.model.Finance.Title;
 import br.com.nimble.nimbleapi.repository.Finance.TitleRepository;
 import br.com.nimble.nimbleapi.service.Person.PersonService;
@@ -19,12 +20,14 @@ public class TitleService {
     @Autowired
     CategoryService categoryService;
     @Autowired
+    SubCategoryService subCategoryService;
+    @Autowired
     AccountService accountService;
 
     public List<Title> createTitle(List<Title>  resource) {
         resource.forEach((title) -> {
             title.setPerson(this.personService.getById(title.getPerson().getId()));
-            title.setCategory(this.categoryService.getCategoryById(title.getCategory().getId()));
+            title.setSubCategory(this.subCategoryService.getSubCategoryById(title.getSubCategory().getId()));
         });
         return this.repository.saveAll(resource);
     }
@@ -40,7 +43,7 @@ public class TitleService {
     public List<Title> paidTitle(List<Title> titleList) {
         titleList.forEach((title) -> {
             title.setPerson(this.personService.getById(title.getPerson().getId()));
-            title.setCategory(this.categoryService.getCategoryById(title.getCategory().getId()));
+            title.setSubCategory(this.subCategoryService.getSubCategoryById(title.getSubCategory().getId()));
         });
         return this.repository.saveAll(titleList);
     }

@@ -93,19 +93,36 @@
     <changeSet id="14" author="tiagobarbosa02@outlook.com">
         <preConditions>
             <not>
-                <tableExists tableName="finance_category"/>
+                <tableExists tableName="category"/>
             </not>
         </preConditions>
-        <createTable tableName="finance_category">
+        <createTable tableName="category">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="name" type="VARCHAR(50)" />
-            <column name="type" type="VARCHAR(10)" />
+            <column name="type" type="VARCHAR(20)" />
         </createTable>
     </changeSet>
 
     <changeSet id="15" author="tiagobarbosa02@outlook.com">
+        <preConditions>
+            <not>
+                <tableExists tableName="subcategory"/>
+            </not>
+        </preConditions>
+        <createTable tableName="subcategory">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(50)" />
+            <column name="category_id" type="BIGINT" >
+                <constraints foreignKeyName="fk_id_category_references_category" referencedTableName="category" referencedColumnNames="id" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="16" author="tiagobarbosa02@outlook.com">
         <preConditions>
             <not>
                 <tableExists tableName="account"/>
@@ -131,7 +148,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="16" author="tiagobarbosa02@outlook.com">
+    <changeSet id="17" author="tiagobarbosa02@outlook.com">
         <preConditions>
             <not>
                 <tableExists tableName="title"/>
@@ -155,8 +172,8 @@
             <column name="person_id" type="BIGINT" >
                 <constraints foreignKeyName="fk_id_person_references_person" referencedTableName="person" referencedColumnNames="id" />
             </column>
-            <column name="category_id" type="BIGINT" >
-                <constraints foreignKeyName="fk_id_category_references_category" referencedTableName="finance_category" referencedColumnNames="id" />
+            <column name="subcategory_id" type="BIGINT" >
+                <constraints foreignKeyName="fk_id_subcategory_references_subcategory" referencedTableName="subcategory" referencedColumnNames="id" />
             </column>
             <column name="account_id" type="BIGINT" >
                 <constraints foreignKeyName="fk_id_account_references_account" referencedTableName="account" referencedColumnNames="id" />

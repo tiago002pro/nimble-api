@@ -10,6 +10,11 @@ import java.util.List;
 
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Long> {
-    @Query(nativeQuery = true, value = "SELECT * FROM finance_category a WHERE a.type = :type ORDER BY a.id ")
+    @Query(nativeQuery = true,
+            value = " SELECT " +
+                    "   * " +
+                    " FROM category a " +
+                    " WHERE a.type = :type " +
+                    " ORDER BY a.id ")
     List<Category> findCategoryByType(@Param("type") String type);
 }
