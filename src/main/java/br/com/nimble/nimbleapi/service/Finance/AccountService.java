@@ -1,7 +1,6 @@
 package br.com.nimble.nimbleapi.service.Finance;
 
 import br.com.nimble.nimbleapi.model.Finance.Account;
-import br.com.nimble.nimbleapi.model.Finance.Title;
 import br.com.nimble.nimbleapi.repository.Finance.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,7 +14,7 @@ public class AccountService {
     AccountRepository repository;
 
     @Transactional
-    public Account createAccount(Account account) {
+    public Account newAccount(Account account) {
         return this.repository.save(account);
     }
 

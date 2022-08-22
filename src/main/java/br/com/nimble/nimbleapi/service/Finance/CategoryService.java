@@ -14,6 +14,11 @@ public class CategoryService {
     CategoryRepository repository;
 
     @Transactional
+    public Category newCategory(Category category) {
+        return this.repository.save(category);
+    }
+
+    @Transactional
     public List<Category> getAllCategories() {
         return this.repository.findAll();
     }
@@ -26,10 +31,5 @@ public class CategoryService {
     @Transactional
     public Category getCategoryById(Long id) {
         return this.repository.findById(id).get();
-    }
-
-    @Transactional
-    public Category newCategory(Category category) {
-        return this.repository.save(category);
     }
 }

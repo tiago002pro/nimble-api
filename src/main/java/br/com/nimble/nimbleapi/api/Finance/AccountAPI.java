@@ -15,8 +15,8 @@ public class AccountAPI {
 
     @CrossOrigin
     @RequestMapping(method = RequestMethod.POST, value = "/new")
-    public ResponseEntity createAccount(@RequestBody Account resource)  {
-        return ResponseEntity.ok(this.service.createAccount(resource));
+    public ResponseEntity newAccount(@RequestBody Account resource)  {
+        return ResponseEntity.ok(this.service.newAccount(resource));
     }
 
     @CrossOrigin

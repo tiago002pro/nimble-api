@@ -18,8 +18,8 @@ public class SubCategoryAPI {
     }
 
     @CrossOrigin
-    @RequestMapping(method = RequestMethod.GET, value = "/all/{type}")
-    public ResponseEntity getAllCategoriesByType(@RequestParam(value = "type") String type) {
+    @RequestMapping(method = RequestMethod.GET, value = "/all/type/{type}")
+    public ResponseEntity getAllCategoriesByType(@PathVariable(value = "type") String type) {
         return ResponseEntity.ok(this.service.getAllSubCategoriesByType(type));
     }
 

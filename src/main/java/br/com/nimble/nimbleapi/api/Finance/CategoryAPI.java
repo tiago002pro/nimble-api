@@ -13,20 +13,22 @@ public class CategoryAPI {
     CategoryService service;
 
     @CrossOrigin
-    @RequestMapping(method = RequestMethod.GET, value = "/get-all")
+    @RequestMapping(method = RequestMethod.POST, value = "/new")
+    public ResponseEntity newCategory(@RequestBody Category category) {
+        return ResponseEntity.ok(this.service.newCategory(category));
+    }
+
+    @CrossOrigin
+    @RequestMapping(method = RequestMethod.GET, value = "/all")
     public ResponseEntity getAllCategories() {
         return ResponseEntity.ok(this.service.getAllCategories());
     }
 
     @CrossOrigin
-    @RequestMapping(method = RequestMethod.GET, value = "/all")
-    public ResponseEntity getAllCategoriesByType(@RequestParam(value = "type") String type) {
+    @RequestMapping(method = RequestMethod.GET, value = "/all/type/{type}")
+    public ResponseEntity getAllCategoriesByType(@PathVariable String type) {
         return ResponseEntity.ok(this.service.getAllCategoriesByType(type));
     }
 
-    @CrossOrigin
-    @RequestMapping(method = RequestMethod.POST, value = "/category-form")
-    public ResponseEntity newCategory(@RequestBody Category category) {
-        return ResponseEntity.ok(this.service.newCategory(category));
-    }
+
 }
